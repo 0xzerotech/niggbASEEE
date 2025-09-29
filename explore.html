@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Explore · niggabase</title>
+  <link rel="stylesheet" href="assets/nb-fallback.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script defer src="assets/tw-fallback.js"></script>
+  <style>
+    :root{ --brown-40:#A37E66; --brown-50:#8B5E3C; --brown-60:#784F33; }
+    .brand-gradient{background:linear-gradient(180deg,var(--brown-40),var(--brown-60));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .brown-tint{background-image:linear-gradient(0deg,rgba(139,94,60,.08),rgba(139,94,60,.08));}
+    /* Force icon stroke weight to match home */
+    .lucide{stroke-width:1.5}
+  </style>
+</head>
+<body class="bg-neutral-950 text-neutral-200 antialiased brown-tint" style="font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial;">
+  <!-- Coming Soon Overlay -->
+  <div id="comingSoon" style="position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;background:rgba(12,12,14,.92);backdrop-filter:blur(6px);text-align:center;padding:24px">
+    <div>
+      <img src="C:\\Users\\DAVID\\Downloads\\niggabase\\niggabase\\assets\\niggabase logo.png" alt="Niggabase" style="width:56px;height:56px;object-fit:contain;filter:drop-shadow(0 6px 24px rgba(255,255,255,.08))">
+      <div style="margin-top:12px;font-weight:800;letter-spacing:-.01em;font-size:28px">Explore is coming soon</div>
+      <div style="margin-top:6px;color:#a3a3a3;max-width:560px">We’re polishing listings and charts. Check back later for the full drop.</div>
+      <div style="margin-top:8px;color:#c9c9c9;font-size:13px">Scout New Licks – Find the Next Pump Before Ops Do.</div>
+      <div style="margin-top:16px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+        <a href="niggabase.html" style="padding:10px 14px;border-radius:12px;background:#8B5E3C;color:#fff;text-decoration:none;font-weight:600">Go home</a>
+        <a href="index.html" style="padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.18);color:#e5e7eb;text-decoration:none;font-weight:600">Landing</a>
+      </div>
+    </div>
+  </div>
+  <div class="h-screen w-full flex overflow-hidden">
+    <!-- Sidebar -->
+    <aside class="hidden lg:flex w-64 flex-col border-r border-white/10 bg-neutral-950/95 backdrop-blur-sm">
+      <div class="h-16 flex items-center px-5 border-b border-white/10">
+        <img src="C:\\Users\\DAVID\\Downloads\\niggabase\\niggabase\\assets\\niggabase logo.png" alt="Niggabase" class="w-8 h-8 rounded-lg object-contain"/>
+        <span class="ml-3 text-lg font-black tracking-tight brand-gradient" style="letter-spacing:-0.02em">Niggabase</span>
+      </div>
+      <nav class="flex-1 overflow-y-auto px-2 py-3">
+        <ul class="space-y-1" id="navList">
+          <li><a href="niggabase.html" class="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-white/5"><i data-lucide="home" class="w-5 h-5"></i><span class="text-sm">Home</span></a></li>
+          <li><a href="assets.html" class="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-white/5"><i data-lucide="wallet" class="w-5 h-5"></i><span class="text-sm">My assets</span></a></li>
+          <li><a href="#" class="w-full flex items-center gap-3 px-3 py-2 rounded-lg bg-white/5 text-white"><i data-lucide="compass" class="w-5 h-5"></i><span class="text-sm font-medium">Explore</span></a></li>
+          <li><a href="one.html" class="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-white/5"><i data-lucide="medal" class="w-5 h-5"></i><span class="text-sm">Niggabase One</span></a></li>
+          <li><a href="credit-card.html" class="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-white/5"><i data-lucide="credit-card" class="w-5 h-5"></i><span class="text-sm">Nigga Card</span></a></li>
+          <li><a href="rewards.html" class="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-white/5"><i data-lucide="gift" class="w-5 h-5"></i><span class="text-sm">Rewards</span></a></li>
+        </ul>
+      </nav>
+      <div class="p-3 border-t border-white/10">
+        <button class="w-full flex items-center justify-between px-3 py-2 rounded-lg bg-white/5 hover:bg-white/10">
+          <span class="text-xs text-neutral-300">Advanced</span>
+          <span class="inline-flex items-center gap-1 text-xs text-neutral-300"><span class="w-2 h-2 rounded-full bg-emerald-400"></span> On</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main content -->
+    <main class="flex-1 flex flex-col min-w-0">
+      <div class="h-[75px] border-b border-white/10 flex items-center justify-between px-3 sm:px-6 bg-neutral-950/70 backdrop-blur-md">
+        <h1 class="text-2xl font-semibold tracking-tight">Explore</h1>
+      </div>
+      <div class="flex-1 overflow-y-auto">
+        <div class="px-3 sm:px-6 py-6 space-y-6">
+          <!-- Top banner -->
+          <div class="rounded-2xl border border-white/10 bg-gradient-to-br from-amber-500/10 to-red-500/10 p-5 flex items-center justify-between">
+            <div>
+              <div class="text-xl font-semibold tracking-tight">Scout New Licks – Find the Next Pump Before Ops Do.</div>
+              <div class="text-sm text-neutral-400">Interactive parody markets. Entertainment only.</div>
+            </div>
+            <div class="hidden md:block w-40 h-16"><canvas id="hoodBanner"></canvas></div>
+          </div>
+
+          <!-- Search -->
+          <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+            <div class="relative max-w-xl">
+              <i data-lucide="scan-search" class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-neutral-400"></i>
+              <input id="packSearch" placeholder="Scan for Packs" class="w-full pl-9 pr-4 py-2 rounded-lg bg-white/5 outline-none focus:ring-2 focus:ring-white/10 text-sm" />
+              <div id="packResults" class="hidden absolute mt-2 w-full rounded-lg border border-white/10 bg-neutral-950 shadow-xl overflow-hidden"></div>
+            </div>
+          </div>
+
+          <!-- Featured Hood Coins -->
+          <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+            <div class="text-sm mb-3">Featured Hood Coins</div>
+            <div class="flex gap-4 overflow-x-auto pb-2" id="hoodGrid"></div>
+          </div>
+
+          <!-- Verified Listings (Your coins) -->
+          <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+            <div class="flex items-center justify-between mb-3">
+              <div class="text-sm font-medium tracking-tight">Verified Listings</div>
+              <div id="listingCount" class="text-xs text-neutral-400"></div>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="min-w-full text-sm">
+                <thead class="text-neutral-400">
+                  <tr>
+                    <th class="text-left font-normal pb-2">Asset</th>
+                    <th class="text-right font-normal pb-2">Price</th>
+                    <th class="text-right font-normal pb-2">Liquidity</th>
+                    <th class="text-right font-normal pb-2">Supply</th>
+                    <th class="text-right font-normal pb-2">Global Fees Paid</th>
+                    <th class="text-right font-normal pb-2">B.Curve</th>
+                    <th class="text-right font-normal pb-2">24h</th>
+                    <th class="text-right font-normal pb-2">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="listingTable"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- More Markets -->
+          <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+            <div class="text-sm font-medium tracking-tight mb-3">New & Experimental Markets</div>
+            <div id="moreGrid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3"></div>
+          </div>
+
+          <!-- Trending + News -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+              <div class="text-sm font-medium tracking-tight mb-3">Hot Blocks</div>
+              <div id="hotBlocks" class="space-y-2 text-sm"></div>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+              <div class="text-sm font-medium tracking-tight mb-3">Trap News</div>
+              <div id="trapNews" class="space-y-3 text-sm"></div>
+            </div>
+          </div>
+
+          <!-- Bottom callout -->
+          <div class="rounded-2xl border border-white/10 bg-gradient-to-br from-indigo-500/10 to-blue-400/10 p-6 flex items-center justify-between">
+            <div>
+              <div class="text-lg font-semibold tracking-tight">Dive Deeper or Get Left in the Dust</div>
+              <div class="text-sm text-neutral-400">Flippin' Digital Bricks Without Catchin' Cases — parody course.</div>
+            </div>
+            <a id="tutorialBtn" class="px-4 py-2 rounded-lg bg-indigo-500 hover:bg-indigo-600 text-sm">Open Tutorials</a>
+          </div>
+        </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+  </script>
+</body>
+</html>
+
+

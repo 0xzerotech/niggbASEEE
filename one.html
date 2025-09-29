@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Niggabase One</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script defer src="assets/tw-fallback.js"></script>
+  <style>
+    :root{ --brown-40:#A37E66; --brown-50:#8B5E3C; --brown-60:#784F33; }
+    .brand-gradient{background:linear-gradient(180deg,var(--brown-40),var(--brown-60));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .brown-tint{background-image:linear-gradient(0deg,rgba(139,94,60,.08),rgba(139,94,60,.08));}
+  </style>
+</head>
+<body class="bg-neutral-950 text-neutral-200 antialiased brown-tint" style="font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial;">
+  <div class="h-screen w-full flex overflow-hidden">
+    <!-- Sidebar -->
+    <aside class="hidden lg:flex w-64 flex-col border-r border-white/10 bg-neutral-950/95 backdrop-blur-sm">
+      <div class="h-16 flex items-center px-5 border-b border-white/10">
+        <img src="C:\\Users\\DAVID\\Downloads\\niggabase\\niggabase\\assets\\niggabase logo.png" alt="Niggabase" class="w-8 h-8 rounded-lg object-contain"/>
+        <span class="ml-3 text-lg font-black tracking-tight brand-gradient" style="letter-spacing:-0.02em">Niggabase</span>
+      </div>
+      <nav class="flex-1 overflow-y-auto px-2 py-3">
+        <ul class="space-y-1" id="navList">
+          <li><a href="niggabase.html" class="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-white/5"><i data-lucide="home" class="w-5 h-5"></i><span class="text-sm">Home</span></a></li>
+          <li><a href="assets.html" class="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-white/5"><i data-lucide="wallet" class="w-5 h-5"></i><span class="text-sm">My assets</span></a></li>
+          <li><a href="#" class="w-full flex items-center gap-3 px-3 py-2 rounded-lg bg-white/5 text-white"><i data-lucide="medal" class="w-5 h-5"></i><span class="text-sm font-medium">Niggabase One</span></a></li>
+          <li><a href="credit-card.html" class="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-white/5"><i data-lucide="credit-card" class="w-5 h-5"></i><span class="text-sm">Nigga Card</span></a></li>
+          <li><a href="rewards.html" class="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-white/5"><i data-lucide="gift" class="w-5 h-5"></i><span class="text-sm">Rewards</span></a></li>
+          
+          
+          <li><a href="explore.html" class="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-white/5"><i data-lucide="compass" class="w-5 h-5"></i><span class="text-sm">Explore</span></a></li>
+        </ul>
+      </nav>
+      <div class="p-3 border-t border-white/10">
+        <button class="w-full flex items-center justify-between px-3 py-2 rounded-lg bg-white/5 hover:bg-white/10">
+          <span class="text-xs text-neutral-300">Advanced</span>
+          <span class="inline-flex items-center gap-1 text-xs text-neutral-300"><span class="w-2 h-2 rounded-full bg-emerald-400"></span> On</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main content -->
+    <main class="flex-1 flex flex-col min-w-0">
+      <div class="h-[75px] border-b border-white/10 flex items-center justify-between px-3 sm:px-6 bg-neutral-950/70 backdrop-blur-md">
+        <h1 class="text-2xl font-semibold tracking-tight">Niggabase One</h1>
+      </div>
+      <div class="flex-1 overflow-y-auto">
+        <div class="max-w-[1440px] mx-auto">
+          <div class="px-3 sm:px-6 py-6 space-y-12">
+          <!-- Join + Preferred benefits grid -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
+            <!-- Join card (left) -->
+            <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-8">
+              <div class="max-w-[340px]">
+                <div class="flex items-center gap-3">
+                  <div class="w-12 h-12 rounded-full bg-white/10 grid place-items-center"><i data-lucide="medal" class="w-6 h-6"></i></div>
+                  <div class="text-xl font-semibold tracking-tight">Join Niggabase One to Duck the Block Tax</div>
+                </div>
+              </div>
+              <div class="mt-5">
+                <div class="text-base"><span class="font-semibold text-white">Get in for</span><span id="joinPrice" class="font-semibold text-white"> $4.20/mo</span></div>
+              </div>
+              <!-- Tier selector -->
+              <div class="mt-6 inline-flex rounded-full bg-white/5 p-1 text-sm">
+                <button data-tier="Lil Nigga" class="tier-chip px-4 py-2 rounded-full text-neutral-300">Lil Nigga</button>
+                <button data-tier="Street Nigga" class="tier-chip px-4 py-2 rounded-full bg-white text-neutral-900">Street Nigga</button>
+                <button data-tier="THAT Nigga" class="tier-chip px-4 py-2 rounded-full text-neutral-300">THAT Nigga</button>
+              </div>
+              <!-- Cadence radios -->
+              <div class="mt-6 space-y-3 text-sm">
+                <label class="flex items-center gap-3">
+                  <input type="radio" name="plan" data-bill="Monthly Hustle" checked class="accent-indigo-500">
+                  <span>Monthly Hustle: <span class="text-neutral-400">$4.20/month</span></span>
+                </label>
+                <label class="flex items-center gap-3">
+                  <input type="radio" name="plan" data-bill="Yearly Grind" class="accent-indigo-500">
+                  <span>Yearly Grind: <span class="text-neutral-400">$42.00/year</span> <span class="ml-2 text-[10px] px-1.5 py-0.5 rounded bg-white/10">SAVE $8.40</span></span>
+                </label>
+              </div>
+              <!-- Legal blurb -->
+              <div class="mt-6 text-[11px] text-neutral-500 leading-relaxed">By clicking “Get In,” you vibe with our trap code & no snitch oath and greenlight a monthly $4.20 hit to your plug cash or brick stash till you bounce. To dodge the hit, handle your shit via “Boss Up” (⛭) in the trap crib before Oct 29, 2025.</div>
+              <!-- CTA row -->
+              <div class="mt-6 flex items-center gap-4">
+                <button id="subscribeBtn" class="flex-1 h-14 rounded-full bg-indigo-500 hover:bg-indigo-600 text-sm">Get In</button>
+                <button id="cancelBtn" class="h-14 px-5 rounded-full bg-white/10 hover:bg-white/15 text-sm hidden">Cancel</button>
+              </div>
+              <div id="statusText" class="mt-4 text-sm text-neutral-400">Ain’t in the Gang? Join now to stack perks.</div>
+            </div>
+
+            <!-- Preferred benefits (right) -->
+            <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-8 leading-relaxed">
+              <div class="text-sm font-semibold">Trap Perks</div>
+              <ul class="mt-4 space-y-4 text-sm">
+                <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 mt-0.5"></i><span>15% Off Perc Plugs: First 30 pills from the connect.</span></li>
+                <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 mt-0.5"></i><span>Bail Bond Backs: 5% back up to $5K/mo.</span></li>
+                <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 mt-0.5"></i><span>No Block Tax: Flip up to $10K/mo in hustles, a cut applies.</span></li>
+                <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 mt-0.5"></i><span>Stack 10% FENT DUST Cashback — COMING SOON Trapbase Plastic Plug.</span></li>
+                <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 mt-0.5"></i><span>Stack Defense: Hire security personnel while you move bricks.</span></li>
+                <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 mt-0.5"></i><span>24/7 Plug Hotline — even from the clink.</span></li>
+                <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 mt-0.5"></i><span>Free Cash Drops — pull-ups, drop-offs, bail wiring.</span></li>
+                <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 mt-0.5"></i><span>Block Raffles — free Glock, 1 BRICK, or a get-out card.</span></li>
+                <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 mt-0.5"></i><span>Corner Deal Slasher — 25% off cuts, up to 100 HoodCash/mo.</span></li>
+                <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 mt-0.5"></i><span>Dodge Fed Heat on Child Support — crew hookups.</span></li>
+                <li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 mt-0.5"></i><span>Block Benefits — Trap, Hoodmart, Bailout Kings.</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Member boosters: APY & Giveaway -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-5 flex items-start gap-4">
+              <div class="w-10 h-10 rounded-lg bg-emerald-500/20 grid place-items-center"><i data-lucide="percent" class="w-5 h-5 text-emerald-400"></i></div>
+              <div class="flex-1">
+                <div class="text-sm font-semibold">APY (Annual Pussy Yield)</div>
+                <div class="text-xs text-neutral-400">Auto-stack your FENT FLAKES — satire only.</div>
+                <div class="mt-3 flex flex-wrap items-center gap-2 text-xs">
+                  <button id="apyToggleBtn" class="px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/10">Toggle auto-compound</button>
+                  <button id="apyDetailsBtn" class="px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/10">Details</button>
+                  <span id="apyStatus" class="ml-2 text-neutral-400">Off</span>
+                </div>
+                <div id="apyDetails" class="hidden mt-3 text-xs text-neutral-400">Compounds fake yield on your parody balance every 24h.</div>
+              </div>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-5 flex items-start gap-4">
+              <div class="w-10 h-10 rounded-lg bg-[color:var(--brown-50)]/20 grid place-items-center"><i data-lucide="gift" class="w-5 h-5 text-[color:var(--brown-40)]"></i></div>
+              <div class="flex-1">
+                <div class="text-sm font-semibold">Giveaway: Snatch a HELLCAT (satire)</div>
+                <div class="text-xs text-neutral-400">No buy‑in. All gas, no brakes — peep the rules.</div>
+                <div class="mt-3 flex flex-wrap items-center gap-2 text-xs">
+                  <button id="gvEnterBtn" class="px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/10">Enter</button>
+                  <button id="gvRulesBtn" class="px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/10">Rules</button>
+                  <span id="gvStatus" class="ml-2 text-neutral-400">0 entries</span>
+                </div>
+                <div id="gvRules" class="hidden mt-3 text-xs text-neutral-400">Winners get bragging rights. Odds: 0%. Parody only.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Extras: Glock & Lawyer session (satire) -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-5 flex items-center justify-between">
+              <div>
+                <div class="text-sm font-semibold">Free Glock (toy) drop</div>
+                <div class="text-xs text-neutral-400">Collectible cap gun, relax.</div>
+              </div>
+              <button id="glockBtn" class="px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/10 text-xs">Claim</button>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-5 flex items-center justify-between">
+              <div>
+                <div class="text-sm font-semibold">2‑hour lawyer session</div>
+                <div class="text-xs text-neutral-400">Mock consult — we’ll pretend it helped.</div>
+              </div>
+              <button id="lawyerBtn" class="px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/10 text-xs">Schedule</button>
+            </div>
+          </div>
+
+          <!-- Compare plans -->
+          <div class="space-y-6">
+            <div class="text-2xl font-semibold tracking-tight">Compare Gangs</div>
+            <!-- Billing frequency -->
+            <div class="flex items-center gap-6 text-sm">
+              <label class="inline-flex items-center gap-2"><input type="radio" name="bill" checked class="accent-indigo-500"><span>Monthly Hustle</span></label>
+              <label class="inline-flex items-center gap-2"><input type="radio" name="bill" class="accent-indigo-500"><span>Yearly Grind <span class="text-xs text-neutral-400">Save 16%</span></span></label>
+            </div>
+
+            <!-- Plans row -->
+              <div class="relative">
+            <div class="relative">
+            <div class="relative">
+              <div class="hidden lg:block absolute inset-y-0 left-1/2 -translate-x-1/2 w-[33%] rounded-2xl bg-white/5 pointer-events-none"></div>
+              <div class="grid grid-cols-1 lg:grid-cols-3 gap-20 relative">
+                <!-- Lil Nigga -->
+                <div>
+                  <div class="text-xl font-semibold">Lil Nigga</div>
+                  <div class="text-sm text-neutral-400"><span id="price-lil">$4.99/month</span></div>
+                  <div class="mt-6"><button class="h-14 px-6 rounded-full bg-indigo-500 hover:bg-indigo-600 text-sm" data-join-tier="Lil Nigga">Join now</button></div>
+                  <div class="my-8 border-t border-white/10"></div>
+                  <ul class="space-y-5 text-sm">
+                    <li>
+                      <div class="font-semibold">$500/mo in zero trading fees</div>
+                      <div class="text-neutral-400 text-xs">A spread applies</div>
+                    </li>
+                    <li>
+                      <div class="font-semibold">Get 10% back in FENT FLAKES</div>
+                      <div class="text-neutral-400 text-xs">COMING SOON · Niggabase One Card</div>
+                    </li>
+                    <li>
+                      <div class="font-semibold">$1K in account protection</div>
+                      <div class="text-neutral-400 text-xs">Protection for unauthorized sends</div>
+                    </li>
+                    <li>
+                      <div class="font-semibold">Boosted rewards on 10K USDC</div>
+                      <div class="text-neutral-400 text-xs">Unlock 4.50% rewards</div>
+                    </li>
+                    <hr class="w-20 border-white/20">
+                    <li>
+                      <div class="font-semibold">Member sweepstakes</div>
+                      <div class="text-neutral-400 text-xs">Win prizes like 1 fent brick</div>
+                    </li>
+                    <hr class="w-20 border-white/20">
+                    <li>
+                      <div class="font-semibold">Easily file crypto taxes</div>
+                      <div class="text-neutral-400 text-xs">With partner benefits and more</div>
+                    </li>
+                    <li>
+                      <div class="font-semibold">Onchain benefits</div>
+                      <div class="text-neutral-400 text-xs">With Base and more</div>
+                    </li>
+                  </ul>
+                </div>
+                <!-- Street Nigga (highlighted) -->
+                <div>
+                  <div class="text-xl font-semibold">Street Nigga</div>
+                  <div class="text-sm text-neutral-400"><span id="price-street">$29.99/month</span></div>
+                  <div class="mt-6"><button class="h-14 px-6 rounded-full bg-indigo-500 hover:bg-indigo-600 text-sm" data-join-tier="Street Nigga">Join now</button></div>
+                  <div class="my-8 border-t border-white/10"></div>
+                  <ul class="space-y-5 text-sm">
+                    <li>
+                      <div class="font-semibold">$10K/mo in zero trading fees</div>
+                      <div class="text-neutral-400 text-xs">A spread applies</div>
+                    </li>
+                    <li>
+                      <div class="font-semibold">Get 10% back in FENT FLAKES</div>
+                      <div class="text-neutral-400 text-xs">COMING SOON · Niggabase One Card</div>
+                    </li>
+                    <li>
+                      <div class="font-semibold">$10K in account protection</div>
+                      <div class="text-neutral-400 text-xs">Protection for unauthorized sends</div>
+                    </li>
+                    <li>
+                      <div class="font-semibold">Boosted rewards on 30K USDC</div>
+                      <div class="text-neutral-400 text-xs">Unlock 4.50% rewards</div>
+                    </li>
+                    <hr class="w-20 border-white/20">
+                    <li>
+                      <div class="font-semibold">24/7 priority support</div>
+                      <div class="text-neutral-400 text-xs">Member exclusive support</div>
+                    </li>
+                    <li>
+                      <div class="font-semibold">Free wire transfers</div>
+                      <div class="text-neutral-400 text-xs">On withdrawals and deposits</div>
+                    </li>
+                    <li>
+                      <div class="font-semibold">Member sweepstakes</div>
+                      <div class="text-neutral-400 text-xs">Win prizes like 1 fent brick</div>
+                    </li>
+                    <li>
+                      <div class="font-semibold">100 USDC/mo advanced trade fee rebates</div>
+                      <div class="text-neutral-400 text-xs">25% off spot trading fees</div>
+                    </li>
+                    <li>
+                      <div class="font-semibold">Easily file crypto taxes</div>
+                      <div class="text-neutral-400 text-xs">With partner benefits and more</div>
+                    </li>
+                    <li>
+                      <div class="font-semibold">Onchain benefits</div>
+                      <div class="text-neutral-400 text-xs">With Base and more</div>
+                    </li>
+                  </ul>
+                </div>
+                <!-- THAT Nigga -->
+                <div>
+                  <div class="text-xl font-semibold">THAT Nigga</div>
+                  <div class="text-sm text-neutral-400"><span id="price-that">$299.99/month</span></div>
+                  <div class="mt-6"><button class="h-14 px-6 rounded-full bg-indigo-500 hover:bg-indigo-600 text-sm" data-join-tier="THAT Nigga">Join now</button></div>
+                  <div class="my-8 border-t border-white/10"></div>
+                  <ul class="space-y-5 text-sm">
+                    <li>
+                      <div class="font-semibold">Unlimited zero trading fees</div>
+                      <div class="text-neutral-400 text-xs">A spread applies</div>
+                    </li>
+                    <li>
+                      <div class="font-semibold">Get 10% back in FENT FLAKES</div>
+                      <div class="text-neutral-400 text-xs">COMING SOON · Niggabase One Card</div>
+                    </li>
+                    <li>
+                      <div class="font-semibold">$250K in account protection</div>
+                      <div class="text-neutral-400 text-xs">Protection for unauthorized sends</div>
+                    </li>
+                    <li>
+                      <div class="font-semibold">Unlimited boosted USDC rewards</div>
+                      <div class="text-neutral-400 text-xs">Unlock 4.50% rewards</div>
+                    </li>
+                    <hr class="w-20 border-white/20">
+                    <li>
+                      <div class="font-semibold">24/7 concierge support</div>
+                      <div class="text-neutral-400 text-xs">Personalized support over video</div>
+                    </li>
+                    <li>
+                      <div class="font-semibold">Free wire transfers</div>
+                      <div class="text-neutral-400 text-xs">On withdrawals and deposits</div>
+                    </li>
+                    <li>
+                      <div class="font-semibold">Member sweepstakes</div>
+                      <div class="text-neutral-400 text-xs">Win prizes like 1 fent brick</div>
+                    </li>
+                    <li>
+                      <div class="font-semibold">Unlimited advanced trade fee rebates</div>
+                      <div class="text-neutral-400 text-xs">25% off spot trading fees</div>
+                    </li>
+                    <li>
+                      <div class="font-semibold">Easily file crypto taxes</div>
+                      <div class="text-neutral-400 text-xs">With partner benefits and more</div>
+                    </li>
+                    <li>
+                      <div class="font-semibold">Onchain benefits</div>
+                      <div class="text-neutral-400 text-xs">With Base and more</div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!-- Billing history + disclaimers -->
+            <div class="flex items-center justify-start">
+              <a href="rewards.html" class="h-10 px-4 rounded-full bg-white/10 hover:bg-white/15 text-sm inline-flex items-center">View Hustle History</a>
+            </div>
+            <div class="space-y-3 text-[11px] text-neutral-500 leading-relaxed">
+              <p>The zero trading fees benefit does not apply to Advanced. A spread is included when you buy, sell, or convert crypto.</p>
+              <p>*Niggabase One Card details coming soon. Card subject to issuer terms and eligibility. Membership required and must remain active.</p>
+              <p>Rewards eligibility varies; not all transactions qualify. Rewards may change and can decrease in value.</p>
+              <p>Membership renews automatically and requires recurring payments. Benefits may change or be removed without notice. Availability varies by region.</p>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    lucide.createIcons({ attrs: { 'stroke-width': 1.5 } });
+    const key='nb-one';
+    const state=JSON.parse(localStorage.getItem(key)||'{"active":false}');
+    const subBtn=()=>document.getElementById('subscribeBtn');
+    const cancelBtn=()=>document.getElementById('cancelBtn');
+    const status=()=>document.getElementById('statusText');
+    const billRadios=()=>document.querySelectorAll('input[name="plan"][data-bill]');
+    const tierChips=()=>document.querySelectorAll('.tier-chip');
+    const headline=()=>document.getElementById('layout-title');
+    const joinHeader=()=>document.querySelector('.text-xl.font-semibold.tracking-tight');
+    function priceMap(tier){
+      // monthly base prices per tier
+      const monthly={"Lil Nigga":1.69,"Street Nigga":4.20,"THAT Nigga":29.99};
+      const yearly={"Lil Nigga":(monthly["Lil Nigga"]*12*0.85),"Street Nigga":42.00,"THAT Nigga":(monthly["THAT Nigga"]*12*0.85)};
+      return {monthly, yearly};
+    }
+
+    function formatUSD(n){ return `$${Number(n).toFixed(2)}`; }
+
+    function updateJoinPricing(){
+      const tier=state.tier || 'Street Nigga';
+      const bill=state.billing || 'Monthly Hustle';
+      const maps=priceMap(tier);
+      const val = bill.includes('Yearly') ? maps.yearly[tier] : maps.monthly[tier];
+      const suffix = bill.includes('Yearly') ? '/year' : '/mo';
+      const el=document.getElementById('joinPrice'); if(el) el.textContent = ` ${formatUSD(val)}${suffix}`;
+      // Update plan cards too
+      const lil = bill.includes('Yearly') ? priceMap('Lil Nigga').yearly['Lil Nigga'] : priceMap('Lil Nigga').monthly['Lil Nigga'];
+      const street = bill.includes('Yearly') ? priceMap('Street Nigga').yearly['Street Nigga'] : priceMap('Street Nigga').monthly['Street Nigga'];
+      const that = bill.includes('Yearly') ? priceMap('THAT Nigga').yearly['THAT Nigga'] : priceMap('THAT Nigga').monthly['THAT Nigga'];
+      const suf = bill.includes('Yearly') ? '/year' : '/month';
+      const s = (id,val)=>{ const x=document.getElementById(id); if(x) x.textContent = `${formatUSD(val)}${suf}`; };
+      s('price-lil', lil); s('price-street', street); s('price-that', that);
+    }
+
+    function sync(){
+      if(state.active){
+        subBtn().classList.add('hidden');
+        cancelBtn().classList.remove('hidden');
+        status().textContent=`Active: ${state.billing||'Monthly Hustle'}`;
+      }else{
+        subBtn().classList.remove('hidden');
+        cancelBtn().classList.add('hidden');
+        status().textContent='Not a member';
+      }
+      if(state.tier){
+        // reflect tier in toolbar title
+        if(headline()) headline().textContent = `Niggabase One — ${state.tier}`;
+        if(joinHeader()) joinHeader().textContent = `Join ${state.tier} plan — Duck the Block Tax`;
+      }
+      updateJoinPricing();
+    }
+    window.addEventListener('DOMContentLoaded',()=>{
+      sync();
+      subBtn().addEventListener('click',()=>{
+        // Simulated checkout then show coming-soon screen
+        state.active=true; localStorage.setItem(key, JSON.stringify(state)); sync();
+        // overlay
+        let wrap=document.getElementById('nbOneComingSoon');
+        if(!wrap){
+          wrap=document.createElement('div'); wrap.id='nbOneComingSoon'; wrap.style.cssText='position:fixed;inset:0;z-index:70;display:flex;align-items:center;justify-content:center;background:rgba(12,12,14,.92);backdrop-filter:blur(6px);text-align:center;padding:24px';
+          wrap.innerHTML=`<div><img src="C:\\Users\\DAVID\\Downloads\\niggabase\\niggabase\\assets\\niggabase logo.png" alt="Niggabase" style="width:56px;height:56px;object-fit:contain;filter:drop-shadow(0 6px 24px rgba(255,255,255,.08))"><div style="margin-top:12px;font-weight:800;letter-spacing:-.01em;font-size:28px">Membership checkout coming soon</div><div style="margin-top:6px;color:#a3a3a3;max-width:560px">You are locked in for ${state.tier||'Street Nigga'} — ${state.billing||'Monthly Hustle'}. We’ll open the real flow next.</div><div style="margin-top:16px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap"><button id="nbOneCsClose" style="padding:10px 14px;border-radius:12px;background:#8B5E3C;color:#fff;border:0;font-weight:600">Close</button></div></div>`;
+          document.body.appendChild(wrap);
+          document.getElementById('nbOneCsClose').addEventListener('click',()=>wrap.remove());
+        } else { wrap.style.display='flex'; }
+      });
+      cancelBtn().addEventListener('click',()=>{state.active=false; localStorage.setItem(key, JSON.stringify(state)); sync();});
+      document.querySelectorAll('[data-join-tier]')?.forEach(btn=>{
+        btn.addEventListener('click',()=>{
+          state.tier=btn.getAttribute('data-join-tier'); localStorage.setItem(key, JSON.stringify(state)); sync();
+          // trigger main Get In to simulate purchase
+          subBtn().click();
+        });
+      });
+      tierChips()?.forEach(chip=>{
+        chip.addEventListener('click',()=>{
+          tierChips().forEach(c=>{c.classList.remove('bg-white','text-neutral-900'); c.classList.add('text-neutral-300');});
+          chip.classList.add('bg-white','text-neutral-900'); chip.classList.remove('text-neutral-300');
+          state.tier = chip.getAttribute('data-tier');
+          localStorage.setItem(key, JSON.stringify(state));
+          sync();
+        });
+      });
+      billRadios()?.forEach(r=>{
+        r.addEventListener('change',()=>{ if(r.checked){ state.billing=r.getAttribute('data-bill'); localStorage.setItem(key, JSON.stringify(state)); sync(); }});
+      });
+
+      // APY panel wires
+      const apyStatus=document.getElementById('apyStatus');
+      const apyToggle=document.getElementById('apyToggleBtn');
+      const apyDetailsBtn=document.getElementById('apyDetailsBtn');
+      const apyDetails=document.getElementById('apyDetails');
+      if(apyToggle){
+        apyToggle.addEventListener('click',()=>{
+          state.apyOn = !state.apyOn; localStorage.setItem(key, JSON.stringify(state));
+          apyStatus.textContent = state.apyOn? 'On' : 'Off';
+        });
+      }
+      if(apyDetailsBtn){
+        apyDetailsBtn.addEventListener('click',()=>{
+          apyDetails.classList.toggle('hidden');
+        });
+      }
+
+      // Giveaway wires
+      const gvStatus=document.getElementById('gvStatus');
+      const gvEnter=document.getElementById('gvEnterBtn');
+      const gvRulesBtn=document.getElementById('gvRulesBtn');
+      const gvRules=document.getElementById('gvRules');
+      state.entries = state.entries||0;
+      if(gvEnter){
+        gvEnter.addEventListener('click',()=>{
+          state.entries++; localStorage.setItem(key, JSON.stringify(state));
+          gvStatus.textContent = `${state.entries} entries`;
+        });
+      }
+      if(gvRulesBtn){ gvRulesBtn.addEventListener('click',()=> gvRules.classList.toggle('hidden')); }
+
+      // Extras
+      const glockBtn=document.getElementById('glockBtn');
+      const lawyerBtn=document.getElementById('lawyerBtn');
+      if(glockBtn){
+        glockBtn.addEventListener('click',()=>{
+          state.glockClaimed=true; localStorage.setItem(key, JSON.stringify(state));
+          glockBtn.textContent='Claimed'; glockBtn.classList.add('bg-emerald-500/20');
+        });
+      }
+      if(lawyerBtn){
+        lawyerBtn.addEventListener('click',()=>{
+          const now=new Date();
+          const slot=`${now.toLocaleDateString()} @ ${now.getHours()+1}:00`;
+          state.lawyerSlot=slot; localStorage.setItem(key, JSON.stringify(state));
+          lawyerBtn.textContent=`Scheduled ${slot}`; lawyerBtn.classList.add('bg-emerald-500/20');
+        });
+      }
+    });
+  </script>
+</body>
+</html>
+
+

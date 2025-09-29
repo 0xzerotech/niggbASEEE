@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Niggabase — Landing</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --fg:#f6f2e6; --fg-muted:rgba(246,242,230,.62);
+      --bg:#0f0d0a; --gold-400:#ffd76a; --gold-500:#f2c84e; --gold-600:#e1b43c;
+    }
+    html,body{height:100%;margin:0;scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--fg);font-family: ui-sans-serif,system-ui,Segoe UI,Inter,Arial}
+    .screen{position:relative;min-height:100vh;overflow:hidden}
+    .grid-lines{position:absolute;inset:0;background:
+      repeating-linear-gradient(90deg,rgba(255,229,150,.06) 0,rgba(255,229,150,.06) 1px,transparent 1px,transparent 140px);
+      animation:drift-lines 8s linear infinite;opacity:.6;pointer-events:none}
+    @keyframes drift-lines{0%{background-position-y:0}100%{background-position-y:60px}}
+    .blob{position:absolute;border-radius:9999px;filter:blur(60px);mix-blend-mode:screen;opacity:.08;
+      background:radial-gradient(60% 60%, rgba(255,222,125,.6) 0%, rgba(242,200,78,.2) 40%, transparent 70%);
+      animation:float 22s ease-in-out infinite}
+    .blob.a{width:520px;height:520px;top:-120px;left:-120px}
+    .blob.b{width:420px;height:420px;bottom:-140px;right:-80px;animation-delay:2s}
+    .blob.c{width:340px;height:340px;top:42%;left:60%;animation-delay:4s}
+    @keyframes float{0%,100%{transform:translate(0) scale(1)}50%{transform:translateY(-10px) scale(1.04)}}
+    .brandTag{position:fixed;top:22px;left:22px;z-index:10;display:flex;align-items:center;gap:10px}
+    .brandTag img{width:22px;height:22px;object-fit:contain}
+    .brandTag span{font-size:16px;letter-spacing:-.01em;font-weight:800;
+      background:linear-gradient(180deg,#ffe8a8,#b88533);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .brandWord{background:linear-gradient(180deg,#ffe8a8,#b88533);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .hero{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 24px 80px;min-height:92vh}
+    .hero .logo{display:flex;justify-content:center;margin-bottom:20px}
+    .hero h1{font-family:'Inter', ui-sans-serif, system-ui, Segoe UI, Arial; font-weight:900; letter-spacing:-.01em; line-height:1.02; margin:0 0 10px; text-align:center;
+      color:var(--fg); font-size:clamp(48px,9.5vw,112px)}
+    .hero h1 .sub{display:block;margin-top:6px;font-size:clamp(28px,5.8vw,52px);color:var(--fg-muted);font-weight:800;letter-spacing:-.005em}
+    .hero p{color:var(--fg-muted);font-size:clamp(16px,2.4vw,20px);max-width:720px;margin:0 auto 28px;line-height:1.6}
+    .cta{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:12px}
+    .enterBtn{appearance:none;height:48px;padding:0 22px;border-radius:14px;border:1px solid rgba(255,229,150,.35);
+      background:transparent;color:#ffe596;font-weight:700;letter-spacing:.01em;
+      box-shadow:0 6px 22px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.06)}
+    .enterBtn:hover{background:linear-gradient(180deg, rgba(255,215,106,.15), rgba(242,200,78,.08));}
+    /* spacing helpers */
+    .container{max-width:1100px;margin:0 auto;padding:0 24px}
+    .section{padding:60px 0}
+    .glow{position:absolute;left:50%;top:50%;width:560px;height:240px;transform:translate(-50%,-50%);filter:blur(42px);
+      pointer-events:none;background:radial-gradient(60% 60%, rgba(255,222,125,.45) 0%, rgba(242,200,78,.18) 40%, transparent 70%);opacity:.28}
+    .scrollHint{position:absolute;left:50%;bottom:30px;transform:translateX(-50%);color:#ffe596;opacity:.92;
+      font-size:15px;letter-spacing:.06em;text-align:center;text-shadow:0 2px 14px rgba(0,0,0,.45)}
+    .scrollHint .arrow{display:block;margin-top:6px;font-size:20px;line-height:1}
+    /* splash */
+    .splash{position:fixed;inset:0;z-index:50;display:grid;place-items:center;background:#0f0d0a;
+      transition:opacity .6s ease;}
+    .splash.hide{opacity:0;pointer-events:none}
+    .spinner{margin-top:16px;width:48px;height:48px;border-radius:50%;border:2px solid rgba(255,229,150,.15);
+      border-top-color:#ffd76a;animation:spin 1.2s linear infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    /* promo */
+    .promo{position:relative;overflow:hidden;border-radius:28px;border:1px solid rgba(255,255,255,.10);
+      background:linear-gradient(180deg,#171614,#0f0d0a)}
+    .promoBox{position:relative;z-index:2;padding:48px 16px;display:flex;flex-direction:column;align-items:center;gap:18px;text-align:center}
+    .promoTiny{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#9ca0a8}
+    .promoTitle{max-width:980px;font-weight:700;letter-spacing:-.02em;line-height:1.1;font-size:clamp(24px,4.2vw,36px)}
+    .promoCard{margin-top:6px;position:relative;width:min(420px,62vw);aspect-ratio:1.7/1;border-radius:16px;border:1px solid rgba(255,255,255,.10);
+      background:#0f0f10;box-shadow:0 20px 120px rgba(0,0,0,.5);overflow:hidden}
+    .promoCard .vignette{position:absolute;inset:0;background:radial-gradient(120% 120% at 80% 20%, rgba(255,255,255,.08), transparent 55%)}
+    .promoCard .matrix{position:absolute;inset:0;opacity:.35;font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size:10px;line-height:12px;color:rgba(220,222,224,.9);padding:20px;white-space:pre;word-break:break-word}
+    .promoCard .brand{position:absolute;top:10px;right:14px;font-size:12px;color:rgba(232,232,236,.9)}
+    .promoCard .chip{position:absolute;left:14px;top:12px;width:48px;height:34px;border-radius:8px;background:linear-gradient(135deg,#e3e5e8,#b9bcc2);box-shadow:inset 0 1px 2px rgba(0,0,0,.25)}
+    .promoCard .num{position:absolute;left:14px;bottom:42px;letter-spacing:.32em;font-size:18px}
+    .promoCard .meta{position:absolute;left:14px;bottom:14px;font-size:10px;color:#a0a4ab}
+    .promoCTA{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+    .promoCTA .solid{height:48px;padding:0 18px;border-radius:999px;background:#eee;color:#0e0e10;font-weight:600}
+    .promoCTA .link{height:48px;padding:0 12px;border-radius:999px;color:#e4e6ea;text-decoration:underline;background:transparent;border:0}
+    .promoGlow{position:absolute;left:0;right:0;bottom:-160px;height:60%;filter:blur(60px);background:linear-gradient(0deg, rgba(24,24,26,.4), transparent)}
+    footer{position:relative;background:#0f0d0a;border-top:1px solid rgba(255,229,150,.10);color:rgba(246,242,230,.6);text-align:center;padding:22px}
+    .hide{display:none}
+    /* features */
+    .features{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+    @media (max-width: 980px){ .features{grid-template-columns:repeat(2,minmax(0,1fr));} }
+    @media (max-width: 640px){ .features{grid-template-columns:1fr;} }
+    .fcard{border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.03);border-radius:16px;padding:18px}
+    .ftag{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#a8abaf;margin-bottom:8px}
+    .fcard h3{margin:0 0 6px;font-size:18px;color:#f1ede3;letter-spacing:-.01em}
+    .fcard p{margin:0;color:#bfc2c6;font-size:14px;line-height:1.45}
+  </style>
+</head>
+<body>
+  <div class="screen">
+    <div id="splash" class="splash">
+      <div style="text-align:center">
+        <img src="C:\\Users\\DAVID\\Downloads\\niggabase\\niggabase\\assets\\niggabase logo.png" alt="Niggabase" style="width:64px;height:64px;object-fit:contain;filter:drop-shadow(0 8px 30px rgba(255,215,106,.25))">
+        <div style="margin-top:8px;font-weight:700;letter-spacing:.02em;color:#ffe596">Niggabase</div>
+        <div class="spinner" style="margin:16px auto 0"></div>
+      </div>
+    </div>
+    <div class="grid-lines"></div>
+    <div class="blob a"></div>
+    <div class="blob b"></div>
+    <div class="blob c"></div>
+
+    <div class="brandTag"><img src="C:\\Users\\DAVID\\Downloads\\niggabase\\niggabase\\assets\\niggabase logo.png" alt="Niggabase"><span>Niggabase</span></div>
+
+    <main class="hero">
+      <div class="logo"><img src="C:\\Users\\DAVID\\Downloads\\niggabase\\niggabase\\assets\\niggabase logo.png" alt="Niggabase" style="width:72px;height:72px;object-fit:contain"></div>
+      <div class="glow"></div>
+      <h1><span class="brandWord">Niggabase</span><span class="sub">the first Niggalized Exchange (NEX)</span></h1>
+      <p>an exchange built by real niggas</p>
+      <div class="cta">
+        <button id="enterBtn" class="enterBtn">Enter Niggabase</button>
+      </div>
+      <a href="#perks" class="scrollHint">Scroll to see perks<span class="arrow">↓</span></a>
+    </main>
+
+    <!-- removed extra preview box to avoid duplicate card image space -->
+
+    <section id="perks" class="container" style="padding:36px 0 60px">
+      <div class="promo">
+        <div class="promoBox">
+          <div class="promoTiny">Niggabase One Card</div>
+          <div class="promoTitle">Get 10% back in FENT FLAKES on every transaction — from corner Percs to trap house takeout.</div>
+          <div class="promoCard">
+            <div class="vignette"></div>
+            <div class="matrix">00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000\n 4a 57 6e 61 78 20 47 65 6e 65 73 69 73 20 42 6c 6f 63 6b 00 00 00 00\n e3 b0 c4 42 98 fc 1c 14 9a fb f4 c8 99 6f b9 24 27 ae 41 e4 64 9b 93 4c\n 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00\n 32 33 30 31 30 39 30 33 54 69 6d 65 73 00 00 00 00 00 00 00 00 00 00 00</div>
+            <div class="brand">niggabase</div>
+            <div class="chip"></div>
+            <div class="num">0000 0000 0000 0000</div>
+            <div class="meta">PRE‑DECLINED • 00/00</div>
+          </div>
+          <div class="mini">Coming fall 2025 — stack FENT FLAKES back.</div>
+          <div class="promoCTA">
+            <a class="solid" href="early-access.html">Get early access</a>
+            <button class="link">Terms apply</button>
+          </div>
+        </div>
+        <div class="promoGlow"></div>
+      </div>
+    </section>
+
+    <section class="container section" style="padding-top:10px">
+      <div class="features">
+        <div class="fcard">
+          <div class="ftag">One Perk</div>
+          <h3>Zero Block Tax</h3>
+          <p>Fees? Waived. We know a guy who knows a guy—your flips ride clean across every chart.</p>
+        </div>
+        <div class="fcard">
+          <div class="ftag">One Perk</div>
+          <h3>Priority Plug Support</h3>
+          <p>Skip the line. Real humans on speed‑dial when your bag wobble or the wallet tweakin’.</p>
+        </div>
+        <div class="fcard">
+          <div class="ftag">Nigga Card</div>
+          <h3>10% FENT FLAKES Back</h3>
+          <p>Every swipe gets fed — corner Percs, bail wires, trap takeout — flakes stack automatic.</p>
+        </div>
+        <div class="fcard">
+          <div class="ftag">Nigga Card</div>
+          <h3>$0 Monthly</h3>
+          <p>No sneaky fees. Pre‑declined aesthetic included — just for the flex.</p>
+        </div>
+        <div class="fcard">
+          <div class="ftag">One + Card</div>
+          <h3>Stack Defense</h3>
+          <p>Walk heavy: big black bodyguards on narrative duty watchin’ the bag, 24/7.</p>
+        </div>
+        <div class="fcard">
+          <div class="ftag">One</div>
+          <h3>Raffles &amp; Drops</h3>
+          <p>Win a street‑ready flex pack, 2‑hr lawyer line, or one brick story mode. No toys.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>Parody UI • Smooth animations • Click Launch to continue</footer>
+  </div>
+
+  <script>
+    const firstRunKey='nb.firstRunShown';
+    const goHome=()=>location.href='niggabase.html';
+    const hook=(id,fn)=>{ const el=document.getElementById(id); if(el) el.addEventListener('click',fn); };
+    hook('enterBtn',()=>{ localStorage.setItem(firstRunKey,'done'); goHome(); });
+    // splash hide after load
+    window.addEventListener('load',()=>{
+      setTimeout(()=>{ const s=document.getElementById('splash'); if(s){ s.classList.add('hide'); } }, 650);
+    });
+  </script>
+</body>
+</html>

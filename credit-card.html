@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nigga Card · Niggabase</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script defer src="assets/tw-fallback.js"></script>
+  <style>
+    :root{ --brown-40:#A37E66; --brown-50:#8B5E3C; --brown-60:#784F33; }
+    .brand-gradient{background:linear-gradient(180deg,var(--brown-40),var(--brown-60));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .brown-tint{background-image:linear-gradient(0deg,rgba(139,94,60,.08),rgba(139,94,60,.08));}
+  </style>
+</head>
+<body class="bg-neutral-950 text-neutral-200 antialiased brown-tint" style="font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial;">
+  <div class="h-screen w-full flex overflow-hidden">
+    <!-- Sidebar -->
+    <aside class="hidden lg:flex w-64 flex-col border-r border-white/10 bg-neutral-950/95 backdrop-blur-sm">
+      <div class="h-16 flex items-center px-5 border-b border-white/10">
+        <img src="C:\\Users\\DAVID\\Downloads\\niggabase\\niggabase\\assets\\niggabase logo.png" alt="Niggabase" class="w-8 h-8 rounded-lg object-contain"/>
+        <span class="ml-3 text-lg font-black tracking-tight brand-gradient" style="letter-spacing:-0.02em">Niggabase</span>
+      </div>
+      <nav class="flex-1 overflow-y-auto px-2 py-3">
+        <ul class="space-y-1" id="navList">
+          <li><a href="niggabase.html" class="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-white/5"><i data-lucide="home" class="w-5 h-5"></i><span class="text-sm">Home</span></a></li>
+          <li><a href="assets.html" class="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-white/5"><i data-lucide="wallet" class="w-5 h-5"></i><span class="text-sm">My assets</span></a></li>
+          <li><a href="one.html" class="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-white/5"><i data-lucide="medal" class="w-5 h-5"></i><span class="text-sm">Niggabase One</span></a></li>
+          <li><a href="#" class="w-full flex items-center gap-3 px-3 py-2 rounded-lg bg-white/5 text-white"><i data-lucide="credit-card" class="w-5 h-5"></i><span class="text-sm font-medium">Nigga Card</span></a></li>
+          <li><a href="rewards.html" class="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-white/5"><i data-lucide="gift" class="w-5 h-5"></i><span class="text-sm">Rewards</span></a></li>
+          <li><a href="explore.html" class="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-white/5"><i data-lucide="compass" class="w-5 h-5"></i><span class="text-sm">Explore</span></a></li>
+        </ul>
+      </nav>
+      <div class="p-3 border-t border-white/10">
+        <button class="w-full flex items-center justify-between px-3 py-2 rounded-lg bg-white/5 hover:bg-white/10">
+          <span class="text-xs text-neutral-300">Advanced</span>
+          <span class="inline-flex items-center gap-1 text-xs text-neutral-300"><span class="w-2 h-2 rounded-full bg-emerald-400"></span> On</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main content -->
+    <main class="flex-1 flex flex-col min-w-0">
+      <div class="h-16 border-b border-white/10 flex items-center justify-between px-3 sm:px-6">
+        <h1 class="text-2xl font-semibold tracking-tight">Nigga Card</h1>
+      </div>
+      <div class="flex-1 overflow-y-auto">
+        <div class="max-w-[1440px] mx-auto px-3 sm:px-6 py-8 space-y-10">
+          <!-- HERO -->
+          <section class="relative overflow-hidden rounded-[28px] border border-white/10 bg-gradient-to-b from-neutral-900 to-neutral-950">
+            <div class="relative z-[2] py-12 sm:py-16 flex flex-col items-center text-center gap-6">
+              <div class="text-[12px] tracking-[0.2em] text-neutral-400 uppercase">Niggabase One Card</div>
+              <h2 class="max-w-[980px] text-4xl sm:text-5xl md:text-6xl font-semibold leading-tight tracking-tight">Get 10% back in FENT FLAKES on every transaction — from corner Percs to trap house takeout.</h2>
+              <!-- Card preview -->
+              <div class="mt-2">
+                <div class="relative w-[520px] max-w-[86vw] aspect-[1.7/1] rounded-2xl border border-white/10 bg-neutral-900 shadow-[0_20px_120px_rgba(0,0,0,0.5)] overflow-hidden">
+                  <!-- subtle vignette -->
+                  <div class="absolute inset-0 bg-[radial-gradient(120%_120%_at_80%_20%,rgba(255,255,255,0.08),transparent_55%)]"></div>
+                  <!-- hex matrix -->
+                  <div class="absolute inset-0 opacity-35 font-mono text-[10px] leading-[12px] text-neutral-300/90 p-5 whitespace-pre break-words">
+                    00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000\n
+                    4a 57 6e 61 78 20 47 65 6e 65 73 69 73 20 42 6c 6f 63 6b 00 00 00 00\n
+                    e3 b0 c4 42 98 fc 1c 14 9a fb f4 c8 99 6f b9 24 27 ae 41 e4 64 9b 93 4c\n
+                    00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00\n
+                    32 33 30 31 30 39 30 33 54 69 6d 65 73 00 00 00 00 00 00 00 00 00 00 00
+                  </div>
+                  <!-- brand + chip + details -->
+                  <div class="absolute top-4 right-5 text-xs text-neutral-200/90">niggabase</div>
+                  <div class="absolute left-5 top-5 w-12 h-9 rounded-md bg-gradient-to-br from-neutral-200 to-neutral-400 shadow-inner"></div>
+                  <div class="absolute left-5 bottom-9 text-[18px] tracking-[0.32em]">0000 0000 0000 0000</div>
+                  <div class="absolute left-5 bottom-4 text-[10px] text-neutral-400">PRE‑DECLINED • 00/00</div>
+                </div>
+              </div>
+              <div class="text-sm text-neutral-400">Coming fall 2025 — stack FENT FLAKES back.</div>
+              <div class="flex items-center gap-4">
+                <a href="early-access.html" class="h-14 px-6 rounded-full bg-neutral-100 text-neutral-900 hover:bg-white text-sm inline-flex items-center justify-center">Get early access</a>
+                <button class="text-sm underline text-neutral-300/90">Terms apply</button>
+              </div>
+            </div>
+            <!-- background glow -->
+            <div class="absolute inset-x-0 -bottom-40 h-[60%] blur-[60px] bg-gradient-to-t from-neutral-800/40 to-transparent"></div>
+          </section>
+
+          <!-- Application/info moved to early-access.html -->
+          <!-- simple preview removed in favor of hero card -->
+
+          <!-- Hold more. Earn more. -->
+          <section class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+            <div class="space-y-4">
+              <h3 class="text-5xl font-semibold tracking-tight leading-tight">Hold more. Earn more.</h3>
+              <p class="text-neutral-400 text-lg max-w-[520px]">The more assets you hold on Niggabase, the more FENT FLAKES you stack on every swipe. Keep your bag heavy and your kickbacks heavier.</p>
+            </div>
+            <div class="mx-auto">
+              <svg width="240" height="240" viewBox="0 0 240 240" class="block">
+                <circle cx="120" cy="120" r="100" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="18"/>
+                <g transform="rotate(-90 120 120)">
+                  <circle cx="120" cy="120" r="100" fill="none" stroke="#22c55e" stroke-linecap="round" stroke-width="18" stroke-dasharray="628.319" stroke-dashoffset="565.487"/>
+                </g>
+                <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" class="fill-white" style="font-size:44px; font-weight:700">10%</text>
+                <text x="50%" y="62%" dominant-baseline="middle" text-anchor="middle" class="fill-gray-400" style="font-size:14px">back in FENT FLAKES</text>
+              </svg>
+            </div>
+          </section>
+
+          <!-- Big callout image + copy -->
+          <section class="relative overflow-hidden rounded-2xl border border-white/10">
+            <div class="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent"></div>
+            <div class="aspect-[2.285/1] w-full bg-[radial-gradient(120%_120%_at_50%_30%,rgba(255,255,255,0.06),transparent_60%)]"></div>
+            <div class="absolute inset-0 flex flex-col items-center text-center justify-center gap-5 p-6">
+              <h3 class="text-4xl sm:text-5xl font-semibold tracking-tight max-w-[820px]">Maximize your experience with Niggabase One.</h3>
+              <p class="text-neutral-400 max-w-[820px]">This card is exclusively for members with no added charge. Annual plans start low; perks go crazy.</p>
+              <div class="text-sm text-neutral-300">Benefits include:</div>
+            </div>
+          </section>
+
+          <!-- Benefits row -->
+          <section class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-6 text-center">
+              <div class="text-5xl font-semibold">$0</div>
+              <div class="mt-1 font-medium">Zero trading fees</div>
+              <div class="text-neutral-400 text-sm">— on first $500/mo in trades, a spread applies</div>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-6 text-center">
+              <div class="text-5xl font-semibold">10%</div>
+              <div class="mt-1 font-medium">FENT FLAKES back</div>
+              <div class="text-neutral-400 text-sm">— every purchase, every time</div>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-6 text-center">
+              <div class="text-5xl font-semibold">$120</div>
+              <div class="mt-1 font-medium">Gas credits on Base</div>
+              <div class="text-neutral-400 text-sm">— $10/mo smart wallet gas</div>
+            </div>
+          </section>
+
+          <!-- Additional cardholder benefits -->
+          <section class="space-y-6">
+            <h3 class="text-3xl font-semibold tracking-tight">Additional cardholder benefits</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div class="space-y-4">
+                <div class="flex items-center gap-3"><i data-lucide="chevron-right" class="w-4 h-4 text-neutral-500"></i><span>Retail Protection</span></div>
+                <div class="flex items-center gap-3"><i data-lucide="chevron-right" class="w-4 h-4 text-neutral-500"></i><span>Extended Warranty</span></div>
+                <div class="flex items-center gap-3"><i data-lucide="chevron-right" class="w-4 h-4 text-neutral-500"></i><span>Return Protection</span></div>
+                <div class="flex items-center gap-3"><i data-lucide="chevron-right" class="w-4 h-4 text-neutral-500"></i><span>Exclusive Experiences</span></div>
+              </div>
+              <div class="space-y-4">
+                <div class="flex items-center gap-3"><i data-lucide="chevron-right" class="w-4 h-4 text-neutral-500"></i><span>Car Rental Loss & Damage Insurance</span></div>
+                <div class="flex items-center gap-3"><i data-lucide="chevron-right" class="w-4 h-4 text-neutral-500"></i><span>Trip Cancellation / Interruption</span></div>
+                <div class="flex items-center gap-3"><i data-lucide="chevron-right" class="w-4 h-4 text-neutral-500"></i><span>Lost or Damaged Luggage</span></div>
+                <div class="flex items-center gap-3"><i data-lucide="chevron-right" class="w-4 h-4 text-neutral-500"></i><span>Roadside & Emergency Assistance</span></div>
+              </div>
+            </div>
+          </section>
+
+          
+
+          <!-- FAQ -->
+          <section class="space-y-6">
+            <h3 class="text-3xl font-semibold tracking-tight">Frequently asked questions</h3>
+            <div class="divide-y divide-white/10 rounded-2xl border border-white/10 bg-white/[0.03]">
+              <details class="group p-5">
+                <summary class="flex items-center justify-between cursor-pointer list-none">
+                  <span>When can I apply for the card?</span>
+                  <i data-lucide="chevron-down" class="w-4 h-4 transition-transform group-open:rotate-180"></i>
+                </summary>
+                <div class="pt-3 text-neutral-400 text-sm">Rolling out soon. Join the early access list and we’ll hit you when it’s live.</div>
+              </details>
+              <details class="group p-5">
+                <summary class="flex items-center justify-between cursor-pointer list-none">
+                  <span>Do I need to be a Niggabase One member?</span>
+                  <i data-lucide="chevron-down" class="w-4 h-4 transition-transform group-open:rotate-180"></i>
+                </summary>
+                <div class="pt-3 text-neutral-400 text-sm">Yes — the card is included with One membership at no extra charge.</div>
+              </details>
+              <details class="group p-5">
+                <summary class="flex items-center justify-between cursor-pointer list-none">
+                  <span>How do FENT FLAKES rewards work?</span>
+                  <i data-lucide="chevron-down" class="w-4 h-4 transition-transform group-open:rotate-180"></i>
+                </summary>
+                <div class="pt-3 text-neutral-400 text-sm">Every transaction kicks back 10% in FENT FLAKES. The more you hold on-platform, the more promos you unlock.</div>
+              </details>
+            </div>
+          </section>
+          <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-4 max-w-2xl text-xs text-neutral-400">Disclaimer: Not a real card — don’t try swipin’ this at the corner store, fool.</div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    lucide.createIcons({ attrs: { 'stroke-width': 1.5 } });
+    document.getElementById('ccForm').addEventListener('submit', (e)=>{
+      e.preventDefault();
+      document.getElementById('ccResult').textContent = 'Decision: instant regret — application pre‑declined. (demo)';
+    });
+  </script>
+</body>
+</html>
+
+

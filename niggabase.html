@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Home · niggabase</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script defer src="assets/tw-fallback.js"></script>
+    <style>
+      :root{
+        --brown-40:#A37E66; --brown-50:#8B5E3C; --brown-60:#784F33;
+      }
+      body{font-family:Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial}
+      .brand-gradient{background:linear-gradient(180deg,var(--brown-40),var(--brown-60));-webkit-background-clip:text;background-clip:text;color:transparent}
+      .brown-tint{background-image:linear-gradient(0deg,rgba(139,94,60,.08),rgba(139,94,60,.08));}
+    </style>
+  </head>
+  <body class="bg-neutral-950 text-neutral-200 antialiased brown-tint">
+    <div class="h-screen w-full flex overflow-hidden">
+      <!-- Sidebar -->
+      <aside class="hidden lg:flex w-64 flex-col border-r border-white/10 bg-neutral-950/95 backdrop-blur-sm">
+        <div class="h-16 flex items-center px-5 border-b border-white/10">
+          <img src="C:\\Users\\DAVID\\Downloads\\niggabase\\niggabase\\assets\\niggabase logo.png" alt="Niggabase" class="w-8 h-8 rounded-lg object-contain"/>
+          <span class="ml-3 text-lg font-black tracking-tight brand-gradient">Niggabase</span>
+        </div>
+        <nav class="flex-1 overflow-y-auto px-2 py-3">
+          <ul class="space-y-1 text-sm">
+            <li><a href="#" class="flex items-center gap-3 px-3 py-2 rounded-lg bg-white/5 text-white"><i data-lucide="home" class="w-5 h-5"></i><span class="font-medium">Home</span></a></li>
+            <li><a href="assets.html" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-white/5"><i data-lucide="wallet" class="w-5 h-5"></i><span>My assets</span></a></li>
+            <li><a href="one.html" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-white/5"><i data-lucide="medal" class="w-5 h-5"></i><span>Niggabase One</span></a></li>
+            <li><a href="credit-card.html" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-white/5"><i data-lucide="credit-card" class="w-5 h-5"></i><span>Nigga Card</span></a></li>
+            <li><a href="rewards.html" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-white/5"><i data-lucide="gift" class="w-5 h-5"></i><span>Rewards</span></a></li>
+            <li><a href="explore.html" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-white/5"><i data-lucide="compass" class="w-5 h-5"></i><span>Explore</span></a></li>
+          </ul>
+        </nav>
+        <div class="p-3 border-t border-white/10">
+          <button class="w-full flex items-center justify-between px-3 py-2 rounded-lg bg-white/5">
+            <span class="text-xs text-neutral-300">Advanced</span>
+            <span class="inline-flex items-center gap-1 text-xs text-neutral-300"><span class="w-2 h-2 rounded-full bg-emerald-400"></span> On</span>
+          </button>
+        </div>
+      </aside>
+
+      <!-- Main content -->
+      <main class="flex-1 flex flex-col min-w-0">
+        <!-- Top bar (no search per request) -->
+        <div class="h-[75px] border-b border-white/10 flex items-center justify-between px-3 sm:px-6 bg-neutral-950/70 backdrop-blur-md">
+          <h1 class="text-xl font-semibold">Home</h1>
+          <div class="flex items-center gap-2">
+            <button id="notifBtn" class="p-2 rounded-full hover:bg-white/5 relative"><i data-lucide="bell" class="w-5 h-5"></i></button>
+            <button id="profileBtn" class="p-2 rounded-full hover:bg-white/5"><i data-lucide="user" class="w-5 h-5"></i></button>
+          </div>
+        </div>
+
+        <!-- Content and Right panel grid -->
+        <div class="flex-1 overflow-y-auto">
+          <div class="grid grid-cols-1 xl:grid-cols-[1fr_392px] gap-6 px-3 sm:px-6 py-6">
+            <!-- Left column -->
+            <section class="space-y-6 min-w-0">
+              <!-- Balance summary with roast badge when zero -->
+              <div class="rounded-2xl border border-white/10 bg-white/[0.03]">
+                <div class="p-5 sm:p-6 border-b border-white/10">
+                  <div class="flex items-end justify-between">
+                    <div>
+                      <div id="total-balance" class="text-3xl sm:text-4xl font-black tracking-tight">$0.00</div>
+                      <div class="mt-1 text-emerald-400 text-sm font-semibold">↑ +$0.00 (0.00%) 1D</div>
+                    </div>
+                    <div class="hidden md:block w-40 h-16"><canvas id="balanceChart"></canvas></div>
+                  </div>
+                </div>
+                <!-- Crypto/Cash rows -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
+                  <a href="assets.html" class="p-5 sm:p-6 border-t border-white/10 flex items-center justify-between hover:bg-white/5 transition-colors">
+                    <div class="flex items-center gap-3">
+                      <div class="w-9 h-9 rounded-lg bg-[color:var(--brown-50)]/20 grid place-items-center"><i data-lucide="coins" class="w-5 h-5 text-[color:var(--brown-40)]"></i></div>
+                      <div>
+                        <div class="text-sm text-neutral-300">Crypto</div>
+                      
+                      </div>
+                    </div>
+                    <div class="flex items-center gap-2"><div class="text-sm text-neutral-300">Balance</div><i data-lucide="chevron-right" class="w-4 h-4 text-neutral-500"></i></div>
+                  </a>
+                  <a href="assets.html" class="p-5 sm:p-6 border-t md:border-l border-white/10 flex items-center justify-between hover:bg-white/5 transition-colors">
+                    <div class="flex items-center gap-3">
+                      <div class="w-9 h-9 rounded-lg bg-emerald-500/20 grid place-items-center"><i data-lucide="wallet" class="w-5 h-5 text-emerald-400"></i></div>
+                      <div>
+                        <div class="text-sm text-neutral-300">Cash</div>
+                        <div class="text-xs text-neutral-400">Balance <span class="text-neutral-200">$0.00</span></div>
+                      </div>
+                    </div>
+                    <div class="flex items-center gap-2"><div class="text-sm text-neutral-300">Balance</div><i data-lucide="chevron-right" class="w-4 h-4 text-neutral-500"></i></div>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Banners -->
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                <!-- APY banner with working controls -->
+                <div id="apyCard" data-open="apy" role="button" tabindex="0" class="rounded-2xl border border-white/10 bg-white/[0.03] p-4 cursor-pointer">
+                  <div class="flex items-start justify-between gap-4">
+                    <div class="flex items-center gap-4">
+                      <div class="w-10 h-10 rounded-lg bg-emerald-500/20 grid place-items-center"><i data-lucide="percent" class="w-5 h-5 text-emerald-400"></i></div>
+                      <div>
+                        <div class="text-sm font-semibold tracking-tight">APY (Annual Pussy Yield)</div>
+                        <div class="text-xs text-neutral-400">Tap to manage auto‑compound &amp; learn more.</div>
+                        <div class="text-xs text-neutral-400 mt-1">NGL, this your only hope — park a few bands and let those Pussy returns hit annually.</div>
+                      </div>
+                    </div>
+                    <button class="p-2 rounded-full hover:bg-white/5" data-dismiss="bnr2"><i data-lucide="x" class="w-4 h-4"></i></button>
+                  </div>
+                </div>
+
+                <!-- Giveaway banner with working controls -->
+                <div id="gvCard" data-open="gv" role="button" tabindex="0" class="rounded-2xl border border-white/10 bg-white/[0.03] p-4 cursor-pointer">
+                  <div class="flex items-start justify-between gap-4">
+                    <div class="flex items-center gap-4">
+                      <div class="w-10 h-10 rounded-lg bg-[color:var(--brown-50)]/20 grid place-items-center"><i data-lucide="car" class="w-5 h-5 text-[color:var(--brown-40)]"></i></div>
+                      <div>
+                        <div class="text-sm font-semibold tracking-tight">Giveaway: Snatch a HELLCAT</div>
+                        <div class="text-xs text-neutral-400">Includes Free Glock (toy) + Get‑Out‑Of‑Jail Free card. Tap for details.</div>
+                      </div>
+                    </div>
+                    <button class="p-2 rounded-full hover:bg-white/5" data-dismiss="bnr1"><i data-lucide="x" class="w-4 h-4"></i></button>
+                  </div>
+                </div>
+              </div>
+
+              
+
+              <!-- Watchlist (Big Steppers / Fell Off) -->
+              <div class="rounded-2xl border border-white/10 bg-white/[0.03]">
+              <div class="p-4 sm:p-5 border-b border-white/10">
+                <div id="wlFilters" class="flex flex-wrap items-center gap-2 text-xs">
+                  <button data-sort="big" class="px-3 py-1 rounded-full bg-white/10">Big Steppers</button>
+                  <button data-sort="fell" class="px-3 py-1 rounded-full bg-white/5 hover:bg-white/10">Fell Off</button>
+                  <button data-sort="dex" class="px-3 py-1 rounded-full bg-white/5 hover:bg-white/10">DEX</button>
+                  <button data-sort="most" class="px-3 py-1 rounded-full bg-white/5 hover:bg-white/10">Most copped</button>
+                  <button data-sort="hype" class="px-3 py-1 rounded-full bg-white/5 hover:bg-white/10">On everybody timeline</button>
+                </div>
+              </div>
+                <div class="divide-y divide-white/10" id="wl">
+                  <!-- rows injected by JS for click-through to chart.html -->
+                </div>
+              </div>
+
+              <!-- Market overview -->
+              <div class="space-y-4">
+                <h2 class="text-lg font-semibold tracking-tight">Market overview</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
+                  <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-4"><div class="text-neutral-400 text-xs">Whole market bag</div><div class="mt-1">$3.72T <span class="text-emerald-400">↑ 2.19%</span></div></div>
+                  <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-4"><div class="text-neutral-400 text-xs">Block volume</div><div class="mt-1">$196.68B <span class="text-emerald-400">↑ 24.77%</span></div></div>
+                  <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-4"><div class="text-neutral-400 text-xs">BTC got the set in a chokehold</div><div class="mt-1">59.99% <span class="text-rose-400">↓ 0.05%</span></div></div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Right trade panel (full-height) -->
+            <aside class="border border-white/10 bg-white/[0.03] p-4 sticky top-0 h-screen -mt-6 flex flex-col overflow-y-auto">
+              <div class="flex items-center justify-between">
+                <div class="inline-flex items-center gap-2 rounded-full bg-white/5 p-1">
+                  <button class="px-3 py-1.5 text-xs rounded-full bg-white/10 trade-tab" data-tab="Buy">Buy</button>
+                  <button class="px-3 py-1.5 text-xs rounded-full hover:bg-white/5 trade-tab" data-tab="Sell">Sell</button>
+                  <button class="px-3 py-1.5 text-xs rounded-full hover:bg-white/5 trade-tab" data-tab="Convert">Convert</button>
+                </div>
+                <div class="relative">
+                  <button id="orderTypeBtn" class="inline-flex items-center gap-1 px-3 py-1.5 text-xs rounded-full bg-white/5 hover:bg-white/10">
+                    <span id="orderTypeLabel">One-time order</span>
+                    <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                  </button>
+                  <div id="orderTypeMenu" class="hidden absolute right-0 mt-2 w-44 rounded-lg border border-white/10 bg-neutral-950 shadow-xl">
+                    <button class="w-full text-left px-3 py-2 text-sm hover:bg-white/5 order-type" data-type="One-time order">One-time order</button>
+                    <button class="w-full text-left px-3 py-2 text-sm hover:bg-white/5 order-type" data-type="Recurring (weekly)">Recurring (weekly)</button>
+                    <button class="w-full text-left px-3 py-2 text-sm hover:bg-white/5 order-type" data-type="Recurring (monthly)">Recurring (monthly)</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-6">
+                <div class="flex items-baseline gap-2">
+                  <input id="tradeAmount" inputmode="decimal" placeholder="0" class="bg-transparent text-[40px] sm:text-5xl font-medium tracking-tight w-40 focus:outline-none" />
+                  <span class="text-2xl sm:text-3xl tracking-tight font-medium text-neutral-400">USD</span>
+                  <button id="amountMax" class="ml-auto px-2.5 py-1.5 rounded-full bg-white/5 hover:bg-white/10 text-xs">Max</button>
+                </div>
+                <div class="mt-1 text-xs inline-flex items-center gap-1" id="estimationRow">
+                  <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-indigo-400"></i>
+                  <span id="amountEstimate" class="text-indigo-400">0 BTC</span>
+                </div>
+              </div>
+
+              <div class="mt-6 space-y-3">
+                <button id="fundingBtn" class="w-full flex items-center justify-between p-3 rounded-xl bg-white/5 hover:bg-white/10">
+                  <span class="inline-flex items-center gap-2">
+                    <span class="w-8 h-8 rounded-lg bg-emerald-500/20 flex items-center justify-center">
+                      <i data-lucide="credit-card" class="w-4 h-4 text-emerald-400"></i>
+                    </span>
+                  <span class="text-left">
+                    <span class="text-sm">Pay with</span>
+                    <span id="fundingLabel" class="block text-xs text-neutral-400">EBT</span>
+                    </span>
+                  </span>
+                  <span class="text-right">
+                    <span id="cashAvailable" class="block text-sm">$0.00</span>
+                    <span class="block text-xs text-neutral-500">Available</span>
+                  </span>
+                </button>
+                <button id="assetBtn" class="w-full flex items-center justify-between p-3 rounded-xl bg-white/5 hover:bg-white/10">
+                  <span class="inline-flex items-center gap-2">
+                    <span class="w-8 h-8 rounded-lg bg-amber-500/20 flex items-center justify-center">
+                      <i data-lucide="bitcoin" class="w-4 h-4 text-amber-400"></i>
+                    </span>
+                    <span class="text-left">
+                      <span id="assetAction" class="text-sm">Buy</span>
+                      <span id="assetLabel" class="block text-xs text-neutral-400">Bitcoin</span>
+                    </span>
+                  </span>
+                  <i data-lucide="chevron-right" class="w-4 h-4 text-neutral-500"></i>
+                </button>
+              </div>
+
+              <button id="reviewOrderBtn" class="mt-6 w-full rounded-full bg-[color:var(--brown-50)] hover:bg-[color:var(--brown-60)] transition-colors text-sm font-semibold py-3 disabled:opacity-50 disabled:cursor-not-allowed">Review order</button>
+
+              <div class="mt-6 space-y-2 text-sm">
+                <button id="sendBtn" class="w-full flex items-center justify-between p-3 rounded-xl hover:bg-white/5"><span class="inline-flex items-center gap-3"><span class="w-8 h-8 rounded-lg bg-indigo-500/20 grid place-items-center"><i data-lucide="arrow-up-right" class="w-4 h-4 text-indigo-400"></i></span><span>Send crypto</span></span><i data-lucide="chevron-right" class="w-4 h-4 text-neutral-500"></i></button>
+                <button id="receiveBtn" class="w-full flex items-center justify-between p-3 rounded-xl hover:bg-white/5"><span class="inline-flex items-center gap-3"><span class="w-8 h-8 rounded-lg bg-blue-500/20 grid place-items-center"><i data-lucide="arrow-down-left" class="w-4 h-4 text-blue-400"></i></span><span>Receive crypto</span></span><i data-lucide="chevron-right" class="w-4 h-4 text-neutral-500"></i></button>
+                <button id="depositBtn" class="w-full flex items-center justify-between p-3 rounded-xl hover:bg-white/5"><span class="inline-flex items-center gap-3"><span class="w-8 h-8 rounded-lg bg-violet-500/20 grid place-items-center"><i data-lucide="landmark" class="w-4 h-4 text-violet-400"></i></span><span>Deposit cash</span></span><i data-lucide="chevron-right" class="w-4 h-4 text-neutral-500"></i></button>
+                <button id="withdrawBtn" class="w-full flex items-center justify-between p-3 rounded-xl hover:bg-white/5"><span class="inline-flex items-center gap-3"><span class="w-8 h-8 rounded-lg bg-emerald-500/20 grid place-items-center"><i data-lucide="credit-card" class="w-4 h-4 text-emerald-400"></i></span><span>Withdraw cash</span></span><i data-lucide="chevron-right" class="w-4 h-4 text-neutral-500"></i></button>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script>
+      // Icons
+      lucide.createIcons({ attrs: { 'stroke-width': 1.5 } });
+
+      // Roast badge next to zero balance (parenthetical)
+      (function(){
+        const el = document.getElementById('total-balance');
+        if(el && /\$?0(\.0+)?$/.test(el.textContent.trim())){
+          const sp = document.createElement('span');
+          sp.className='ml-1 text-[15px] text-neutral-500 italic';
+          sp.textContent='(🍆😂 broke ass nigga)';
+          el.appendChild(sp);
+        }
+      })();
+
+      // Charts
+      new Chart(document.getElementById('balanceChart'),{
+        type:'line',
+        data:{labels:Array.from({length:30},(_,i)=>i+1),datasets:[{data:Array.from({length:30},()=>Math.random()), borderColor:'#8B5E3C', pointRadius:0, tension:.35, fill:false}]},
+        options:{plugins:{legend:{display:false},tooltip:{enabled:false}}, scales:{x:{display:false},y:{display:false}}, responsive:true, maintainAspectRatio:false}
+      });
+
+      // Watchlist rows → chart.html
+      const wl = document.getElementById('wl');
+      const filterBar = document.getElementById('wlFilters');
+      const sortKeyStore='nb.wl.sort';
+      // Inline SVG avatars so every asset always shows an image (no external placeholders)
+      const svg = (bg, fg, text) => 'data:image/svg+xml;utf8,' + encodeURIComponent(`<?xml version="1.0"?><svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'><rect rx='8' ry='8' width='40' height='40' fill='${bg}'/><text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' font-family='Inter, system-ui, Arial' font-size='14' font-weight='700' fill='${fg}'>${text}</text></svg>`);
+      const rows = [
+        {id:'kfc', name:'KFC Holdings Index (Class A)', symbol:'KFC', price:'$29.99', change:'+1.70%', changeUp:true, img:svg('#7c2d12','#fff','KFC')},
+        {id:'koolaid', name:'KOOLAID Beverages PLC', symbol:'KOOLAID', price:'$3.49', change:'-0.80%', changeUp:false, img:svg('#a21caf','#fff','KLD')},
+        {id:'hellcat', name:'HELLCAT Motor Group, Ltd.', symbol:'HELLCAT', price:'$40,227.012', change:'+8.30%', changeUp:true, img:svg('#0f172a','#facc15','CAT')},
+        {id:'lean', name:'Lean Liquidity Trust', symbol:'LEAN', price:'$811.387', change:'-1.50%', changeUp:false, img:svg('#581c87','#e9d5ff','LEAN')},
+        {id:'percs', name:'Perc Capital Partners', symbol:'PERCS', price:'$303.3', change:'+2.80%', changeUp:true, img:svg('#052e16','#86efac','PRC')},
+        {id:'xan', name:'Xanax Futures', symbol:'XAN', price:'$149.42', change:'-0.70%', changeUp:false, img:svg('#1f2937','#93c5fd','XAN')},
+        {id:'codeine', name:'Codeine Index', symbol:'CODEINE', price:'$666', change:'+1.30%', changeUp:true, img:svg('#312e81','#c7d2fe','CDN')},
+        {id:'oxy', name:'Oxy Options', symbol:'OXY', price:'$420.69', change:'+0.90%', changeUp:true, img:svg('#064e3b','#bbf7d0','OXY')},
+        {id:'molly', name:'Molly Laboratories, Inc.', symbol:'MOLLY', price:'$215.777', change:'+4.20%', changeUp:true, img:svg('#111827','#f9a8d4','MLY')},
+        {id:'zaza', name:'ZAZA Pack Fund', symbol:'ZAZA', price:'$59.99', change:'+3.60%', changeUp:true, img:svg('#14532d','#d9f99d','ZAZA')}
+      ];
+      function parsePriceStr(s){
+        // "$40,227.012" -> 40227.012
+        return Number(String(s).replace(/[^0-9.]/g,'')||'0');
+      }
+      function parseChangeStr(s){
+        // "+1.70%" -> 1.70, "-0.80%" -> -0.80
+        const n=parseFloat(String(s).replace('%',''));
+        return isNaN(n)?0:n*(s.trim().startsWith('-')?-1:1);
+      }
+      function sortRows(data,key){
+        const arr=[...data];
+        if(key==='big'){ arr.sort((a,b)=>parseChangeStr(b.change)-parseChangeStr(a.change)||parsePriceStr(b.price)-parsePriceStr(a.price)); }
+        else if(key==='fell'){ arr.sort((a,b)=>parseChangeStr(a.change)-parseChangeStr(b.change)); }
+        else if(key==='dex'){ arr.sort((a,b)=>a.symbol.localeCompare(b.symbol)); }
+        else if(key==='most'){ arr.sort((a,b)=>parsePriceStr(b.price)-parsePriceStr(a.price)); }
+        else if(key==='hype'){ arr.sort((a,b)=>a.name.length-b.name.length); }
+        return arr;
+      }
+      function renderWL(){
+        wl.innerHTML='';
+        const key=localStorage.getItem(sortKeyStore)||'big';
+        // update active
+        if(filterBar){
+          filterBar.querySelectorAll('button').forEach(b=>{
+            if(b.dataset.sort===key){ b.classList.add('bg-white/10'); } else { b.classList.remove('bg-white/10'); b.classList.add('bg-white/5'); }
+          });
+        }
+        const data=sortRows(rows,key);
+        for(const r of data){
+          const row = document.createElement('div');
+          row.className='p-4 sm:p-5 grid grid-cols-12 items-center gap-3 hover:bg-white/[0.02] cursor-pointer';
+          row.innerHTML = `
+            <div class="col-span-5 sm:col-span-4 flex items-center gap-3">
+              <img src="${r.img}" class="w-7 h-7 rounded-full" alt="${r.symbol}">
+              <div><div class="text-sm font-semibold">${r.name}</div><div class="text-xs text-neutral-400">${r.symbol}</div></div>
+            </div>
+            <div class="col-span-3 hidden sm:block text-sm">${r.price}</div>
+            <div class="col-span-2"><div class="h-10"><canvas></canvas></div></div>
+            <div class="col-span-2 hidden md:flex flex-col items-end"><div class="text-sm">$2.2T</div><div class="text-xs ${r.changeUp?'text-emerald-400':'text-rose-400'}">${r.change}</div></div>
+            <div class="col-span-2 sm:col-span-1 flex items-center justify-end gap-2">
+              <a href="#" class="text-sm text-[color:var(--brown-40)] hover:underline buy-link" data-id="${r.id}" data-name="${r.name}" data-symbol="${r.symbol}">Buy</a>
+              <button class="p-1.5 rounded hover:bg-white/5"><i data-lucide="star" class="w-4 h-4"></i></button>
+              <button class="p-1.5 rounded hover:bg-white/5"><i data-lucide="more-horizontal" class="w-4 h-4"></i></button>
+            </div>`;
+          row.addEventListener('click',()=>{
+            const pp = encodeURIComponent(r.price);
+            window.location.href = `chart.html?custom=1&coin=${r.id}&symbol=${r.symbol}&name=${encodeURIComponent(r.name)}&img=${encodeURIComponent(r.img)}&p=${pp}`;
+          });
+          row.querySelector('.buy-link').addEventListener('click',(e)=>{
+            e.stopPropagation();
+            const pp = encodeURIComponent(r.price);
+            window.location.href = `chart.html?custom=1&mode=buy&coin=${r.id}&symbol=${r.symbol}&name=${encodeURIComponent(r.name)}&img=${encodeURIComponent(r.img)}&p=${pp}`;
+          });
+          const starBtn=row.querySelector('button i[data-lucide="star"]').parentElement;
+          starBtn.addEventListener('click',(e)=>{
+            e.stopPropagation();
+            const key='nb-stars'; const st=JSON.parse(localStorage.getItem(key)||'{}');
+            st[r.id]=!st[r.id]; localStorage.setItem(key,JSON.stringify(st));
+            starBtn.classList.toggle('text-yellow-400', !!st[r.id]);
+          });
+          const moreBtn=row.querySelectorAll('button')[1];
+          moreBtn.addEventListener('click',(e)=>{e.stopPropagation(); alert(`${r.name} — actions coming soon (demo).`)});
+          wl.appendChild(row);
+        }
+      }
+      // Filter interactions
+      if(filterBar){
+        filterBar.addEventListener('click',(e)=>{
+          const b=e.target.closest('button[data-sort]'); if(!b) return;
+          localStorage.setItem(sortKeyStore, b.dataset.sort);
+          renderWL();
+        });
+      }
+      // Initial render with persisted sort
+      if(!localStorage.getItem(sortKeyStore)) localStorage.setItem(sortKeyStore,'big');
+      renderWL();
+
+      // ===== Trade panel full wiring =====
+      const $= (s, r=document)=>r.querySelector(s);
+      const $$=(s, r=document)=>Array.from(r.querySelectorAll(s));
+      const fmt=(n)=>'$'+Number(n).toLocaleString(undefined,{minimumFractionDigits:2, maximumFractionDigits:2});
+      const fmtCrypto=(n,sym)=>`${Number(n).toFixed(8).replace(/\.?0+$/,'')} ${sym}`;
+      const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+
+      const initState={
+        cashUSD:0,
+        prices:{BTC:111756.69,SOL:209.83,PYUSD:1},
+        holdings:{BTC:0,SOL:0,PYUSD:0},
+        order:{side:'Buy', type:'One-time order', funding:'EBT', asset:'BTC'}
+      };
+      let st; try{st=JSON.parse(localStorage.getItem('nb-home')||'null')||initState;}catch{st=initState}
+      const save=()=>localStorage.setItem('nb-home', JSON.stringify(st));
+      // Migration: force EBT default if old state had USDC
+      try{
+        if(st && st.order && typeof st.order.funding === 'string' && st.order.funding.toUpperCase() === 'USDC'){
+          st.order.funding = 'EBT';
+          save();
+        }
+      }catch(_){}
+
+      function renderBalances(){
+        const total=st.cashUSD+st.holdings.BTC*st.prices.BTC+st.holdings.SOL*st.prices.SOL+st.holdings.PYUSD*st.prices.PYUSD;
+        const tb=document.getElementById('total-balance'); if(tb) tb.firstChild.nodeValue=fmt(total)+' ';
+      }
+      function renderPrices(){/* no table here; only modal usage later */}
+      function renderTrade(){
+        document.getElementById('fundingLabel').textContent=st.order.funding;
+        document.getElementById('orderTypeLabel').textContent=st.order.type;
+        const names={BTC:'Bitcoin',SOL:'Solana',PYUSD:'PayPal USD'};
+        document.getElementById('assetLabel').textContent=names[st.order.asset]||st.order.asset;
+        document.getElementById('assetAction').textContent=st.order.side;
+        const amt=parseFloat(document.getElementById('tradeAmount')?.value||'0')||0;
+        const price=st.prices[st.order.asset]||0;
+        let txt='0'; let enabled=true;
+        if(st.order.side==='Buy'){txt=fmtCrypto(price?amt/price:0, st.order.asset); enabled=amt>0;}
+        else if(st.order.side==='Sell'){txt=fmt(amt); enabled=amt>0 && (st.holdings[st.order.asset]||0) >= (price?amt/price:0);} 
+        else {txt='Conversion preview'; enabled=false;}
+        document.getElementById('amountEstimate').textContent=txt;
+        document.getElementById('reviewOrderBtn').disabled=!enabled;
+        document.getElementById('cashAvailable').textContent=fmt(st.cashUSD);
+      }
+
+      function wireTrade(){
+        // Tabs
+        $$('.trade-tab').forEach(b=>b.addEventListener('click',()=>{
+          st.order.side=b.dataset.tab; save();
+          $$('.trade-tab').forEach(x=>x.classList.remove('bg-white/10'));
+          b.classList.add('bg-white/10');
+          renderTrade();
+        }));
+        // Order type menu
+        document.getElementById('orderTypeBtn').addEventListener('click',(e)=>{
+          e.stopPropagation(); document.getElementById('orderTypeMenu').classList.toggle('hidden');
+        });
+        $$('#orderTypeMenu .order-type').forEach(b=>b.addEventListener('click',()=>{
+          st.order.type=b.dataset.type; save(); document.getElementById('orderTypeMenu').classList.add('hidden'); renderTrade();
+        }));
+        document.addEventListener('click',()=>document.getElementById('orderTypeMenu').classList.add('hidden'));
+        // Amount
+        document.getElementById('tradeAmount').addEventListener('input', renderTrade);
+        document.getElementById('amountMax').addEventListener('click',()=>{
+          const price=st.prices[st.order.asset]||0;
+          if(st.order.side==='Buy') document.getElementById('tradeAmount').value=st.cashUSD.toFixed(2);
+          else if(st.order.side==='Sell') document.getElementById('tradeAmount').value=((st.holdings[st.order.asset]||0)*price).toFixed(2);
+          renderTrade();
+        });
+        // Funding modal
+        document.getElementById('fundingBtn').addEventListener('click',()=>open('funding'));
+        document.getElementById('assetBtn').addEventListener('click',()=>open('asset'));
+        function open(kind){
+          const id=kind==='funding'?'fundingModal':'assetModal';
+          let modal=document.getElementById(id);
+          if(!modal){
+            // Create minimal modal structure once (matching other pages' look)
+            const wrap=document.createElement('div'); wrap.id=id; wrap.className='fixed inset-0 z-[61] grid place-items-center p-4';
+            wrap.innerHTML=`<div class="w-full max-w-sm rounded-2xl border border-white/10 bg-neutral-950 shadow-2xl">
+              <div class="px-4 py-3 border-b border-white/10 flex items-center justify-between"><h3 class="text-lg font-semibold tracking-tight">Select ${kind}</h3><button data-x class="p-2 rounded-lg hover:bg-white/5"><i data-lucide="x" class="w-5 h-5"></i></button></div>
+              <div class="p-2" id="${id}-body"></div>
+              <div class="px-4 py-3 border-t border-white/10 flex justify-end"><button data-x class="px-3 py-2 rounded-lg bg-white/5 hover:bg-white/10 text-sm">Close</button></div>
+            </div>`;
+            document.body.appendChild(wrap); lucide.createIcons();
+            wrap.querySelectorAll('[data-x]').forEach(b=>b.addEventListener('click',()=>wrap.classList.add('hidden')));
+          }
+          document.getElementById(id+'-body').innerHTML = kind==='funding'
+            ? `<button data-f="EBT" class="w-full flex items-center justify-between p-3 rounded-xl hover:bg-white/5"><span class=\"inline-flex items-center gap-2\"><span class=\"w-8 h-8 rounded-lg bg-emerald-500/20 grid place-items-center\"><i data-lucide=\"credit-card\" class=\"w-4 h-4 text-emerald-400\"></i></span><span class=\"text-sm\">EBT balance</span></span><span class=\"text-sm\">${fmt(st.cashUSD)}</span></button>
+               <button data-f="USDC" class="w-full flex items-center justify-between p-3 rounded-xl hover:bg-white/5"><span class=\"inline-flex items-center gap-2\"><span class=\"w-8 h-8 rounded-lg bg-sky-500/20 grid place-items-center\"><i data-lucide=\"circle-dollar-sign\" class=\"w-4 h-4 text-sky-400\"></i></span><span class=\"text-sm\">USDC balance</span></span><span class=\"text-sm\">${fmt(st.cashUSD)}</span></button>
+               <button data-f="Bank" class="w-full flex items-center justify-between p-3 rounded-xl hover:bg-white/5"><span class="inline-flex items-center gap-2"><span class="w-8 h-8 rounded-lg bg-violet-500/20 grid place-items-center"><i data-lucide="landmark" class="w-4 h-4 text-violet-400"></i></span><span class="text-sm">Bank account</span></span><span class="text-xs text-neutral-400">Instant verification</span></button>
+               <button data-f="Card" class="w-full flex items-center justify-between p-3 rounded-xl hover:bg-white/5"><span class="inline-flex items-center gap-2"><span class="w-8 h-8 rounded-lg bg-emerald-500/20 grid place-items-center"><i data-lucide="credit-card" class="w-4 h-4 text-emerald-400"></i></span><span class="text-sm">Debit or credit card</span></span><span class="text-xs text-neutral-400">Fees may apply</span></button>`
+            : `<button data-a="BTC" class="w-full flex items-center justify-between p-3 rounded-xl hover:bg-white/5"><span class="inline-flex items-center gap-2"><span class="w-8 h-8 rounded-lg bg-amber-500/20 grid place-items-center"><i data-lucide="bitcoin" class="w-4 h-4 text-amber-400"></i></span><span class="text-sm">Bitcoin (BTC)</span></span><span class="text-xs text-neutral-400">${fmt(st.prices.BTC)}</span></button>
+               <button data-a="SOL" class="w-full flex items-center justify-between p-3 rounded-xl hover:bg-white/5"><span class="inline-flex items-center gap-2"><span class="w-8 h-8 rounded-lg bg-fuchsia-500/20 grid place-items-center"><i data-lucide="sigma" class="w-4 h-4 text-fuchsia-400"></i></span><span class="text-sm">Solana (SOL)</span></span><span class="text-xs text-neutral-400">${fmt(st.prices.SOL)}</span></button>
+               <button data-a="PYUSD" class="w-full flex items-center justify-between p-3 rounded-xl hover:bg-white/5"><span class="inline-flex items-center gap-2"><span class="w-8 h-8 rounded-lg bg-sky-500/20 grid place-items-center"><i data-lucide="circle-dollar-sign" class="w-4 h-4 text-sky-400"></i></span><span class="text-sm">PayPal USD (PYUSD)</span></span><span class="text-xs text-neutral-400">${fmt(st.prices.PYUSD)}</span></button>`;
+          document.getElementById(id).classList.remove('hidden');
+          lucide.createIcons();
+          if(kind==='funding') $$('#'+id+' [data-f]').forEach(b=>b.addEventListener('click',()=>{st.order.funding=b.dataset.f; save(); renderTrade(); document.getElementById(id).classList.add('hidden');}));
+          else $$('#'+id+' [data-a]').forEach(b=>b.addEventListener('click',()=>{st.order.asset=b.dataset.a; save(); renderTrade(); document.getElementById(id).classList.add('hidden');}));
+        }
+
+      // Generic info popup
+      function infoModal(title, bodyHtml){
+        let wrap=document.getElementById('infoModal');
+        if(!wrap){
+          wrap=document.createElement('div'); wrap.id='infoModal'; wrap.className='fixed inset-0 z-[62] grid place-items-center p-4 hidden';
+          wrap.innerHTML=`<div class="w-full max-w-xl rounded-2xl border border-white/10 bg-neutral-950 shadow-2xl">
+            <div class="px-5 py-4 border-b border-white/10 flex items-center justify-between"><h3 id="infoTitle" class="text-lg font-semibold tracking-tight"></h3><button data-x class="p-2 rounded-lg hover:bg-white/5"><i data-lucide="x" class="w-5 h-5"></i></button></div>
+            <div id="infoBody" class="p-5 text-sm text-neutral-300 leading-relaxed"></div>
+            <div class="px-5 py-4 border-t border-white/10 flex justify-end"><button data-x class="px-3 py-2 rounded-lg bg-white/5 hover:bg-white/10 text-sm">Close</button></div>
+          </div>`;
+          document.body.appendChild(wrap); wrap.querySelectorAll('[data-x]').forEach(b=>b.addEventListener('click',()=>wrap.classList.add('hidden'))); lucide.createIcons();
+        }
+        document.getElementById('infoTitle').textContent=title;
+        document.getElementById('infoBody').innerHTML=bodyHtml;
+        wrap.classList.remove('hidden');
+      }
+
+        // Review
+        document.getElementById('reviewOrderBtn').addEventListener('click',()=>{
+          const amt=parseFloat(document.getElementById('tradeAmount').value||'0')||0;
+          const price=st.prices[st.order.asset]||0;
+          const qty=price?amt/price:0;
+          alert(`${st.order.side} ${fmtCrypto(qty, st.order.asset)} using ${st.order.funding} for ${fmt(amt)}\nType: ${st.order.type}`);
+        });
+      }
+
+      function ticker(){
+        setInterval(()=>{
+          const step=(p,v=.006)=>Math.max(.01, p*(1+(Math.random()-.5)*v));
+          st.prices.BTC=step(st.prices.BTC,.004); st.prices.SOL=step(st.prices.SOL,.01); st.prices.PYUSD=clamp(1+(Math.random()-.5)*.002, .995, 1.005);
+          save(); renderTrade(); renderBalances();
+        },5000);
+      }
+
+      function initHome(){
+        renderBalances(); renderTrade(); wireTrade(); ticker();
+      }
+
+      initHome();
+
+      // ===== Home page perks wiring =====
+      (function(){
+        const key='nb-home-perks';
+        let state; try{state=JSON.parse(localStorage.getItem(key)||'{}')}catch{state={}}
+        const save=()=>localStorage.setItem(key, JSON.stringify(state));
+
+        state.apyOn=!!state.apyOn;
+        const apyCard=document.getElementById('apyCard');
+        function openApy(){
+          // don't trigger if inner control buttons clicked
+          infoModal('APY — Annual Pussy Yield', `
+            <p>Satire mode: auto-compounding on a parody balance. No real funds, just vibes.</p>
+            <ul class="mt-3 list-disc pl-5 space-y-1">
+              <li>Compounds every 24h when toggled On.</li>
+              <li>Displays estimated flakes growth over time.</li>
+              <li>Turn it Off anytime; history persists locally.</li>
+            </ul>
+            <div class="mt-4 flex items-center gap-2 text-xs">
+              <button id="apyToggleBtn" class="px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/10">Toggle auto-compound</button>
+              <span id="apyStatus" class="ml-1 text-neutral-400">${state.apyOn?'On':'Off'}</span>
+            </div>
+          `);
+          const t=document.getElementById('apyToggleBtn'); const s=document.getElementById('apyStatus');
+          if(t){ t.addEventListener('click',()=>{ state.apyOn=!state.apyOn; if(s) s.textContent=state.apyOn?'On':'Off'; save(); }); }
+        }
+        if(apyCard){ apyCard.addEventListener('click', (e)=>{ if(e.target.closest('[data-dismiss]')) return; openApy(); }); apyCard.addEventListener('keypress',(e)=>{ if((e.key==='Enter'||e.key===' ') && !e.target.closest('[data-dismiss]')){ e.preventDefault(); openApy(); }}); }
+
+        state.entries=state.entries||0;
+        const gvCard=document.getElementById('gvCard');
+        function openGv(){
+          infoModal('HELLCAT Giveaway — Parody', `
+            <p>No buy‑in, full satire. Enter as many times as you like — entries are stored in your browser only.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-3">
+              <div class="rounded-xl border border-white/10 p-3">
+                <div class="text-sm font-semibold">Free Glock (toy) drop</div>
+                <div class="text-xs text-neutral-400">Collectible cap gun. Cosmetic only.</div>
+                <button id="glockBtn2" class="mt-2 px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/10 text-xs">Claim</button>
+              </div>
+              <div class="rounded-xl border border-white/10 p-3">
+                <div class="text-sm font-semibold">Get‑Out‑Of‑Jail Free Card</div>
+                <div class="text-xs text-neutral-400">One time use — Monopoly rules, vibes only.</div>
+                <button id="jailBtn2" class="mt-2 px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/10 text-xs">Add to wallet</button>
+              </div>
+            </div>
+            <div class="mt-4 flex items-center gap-2 text-xs">
+              <button id="gvEnterBtn" class="px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/10">Enter</button>
+              <button id="gvRulesBtn" class="px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/10">Rules</button>
+              <span id="gvStatus" class="ml-1 text-neutral-400">${state.entries} entries</span>
+            </div>
+            <div id="gvRules" class="hidden mt-2 text-xs text-neutral-400">Winners get bragging rights. Odds: 0%. Parody only.</div>
+          `);
+          const g2=document.getElementById('glockBtn2'); if(g2) g2.addEventListener('click',()=>{ state.glock=true; save(); g2.textContent='Claimed'; g2.classList.add('bg-emerald-500/20'); });
+          const j2=document.getElementById('jailBtn2'); if(j2) j2.addEventListener('click',()=>{ state.getOut=true; save(); j2.textContent='Added'; j2.classList.add('bg-emerald-500/20'); });
+          const gvEnter=document.getElementById('gvEnterBtn'); const gvStatus=document.getElementById('gvStatus'); const gvRules=document.getElementById('gvRules'); const gvRulesBtn=document.getElementById('gvRulesBtn');
+          if(gvEnter){ gvEnter.addEventListener('click',()=>{ state.entries=(state.entries||0)+1; if(gvStatus) gvStatus.textContent=`${state.entries} entries`; save(); }); }
+          if(gvRulesBtn){ gvRulesBtn.addEventListener('click',()=> gvRules?.classList.toggle('hidden')); }
+        }
+        if(gvCard){ gvCard.addEventListener('click',(e)=>{ if(e.target.closest('[data-dismiss]')) return; openGv(); }); gvCard.addEventListener('keypress',(e)=>{ if((e.key==='Enter'||e.key===' ') && !e.target.closest('[data-dismiss]')){ e.preventDefault(); openGv(); }}); }
+
+        // Event delegation fallback in case direct bindings miss
+        document.addEventListener('click',(e)=>{
+          if(e.target.closest('[data-dismiss]')) return;
+          const a=e.target.closest('[data-open="apy"]'); if(a){ openApy(); return; }
+          const g=e.target.closest('[data-open="gv"]'); if(g){ openGv(); return; }
+        });
+        document.addEventListener('keydown',(e)=>{
+          if(!(e.key==='Enter'||e.key===' ')) return; const n=e.target.closest('[data-open]'); if(n && !e.target.closest('[data-dismiss]')){ e.preventDefault(); n.getAttribute('data-open')==='apy'?openApy():openGv(); }
+        });
+
+        const glockBtn=document.getElementById('glockBtn');
+        const lawyerBtn=document.getElementById('lawyerBtn');
+        if(glockBtn){ glockBtn.addEventListener('click',()=>{ state.glock=true; glockBtn.textContent='Claimed'; glockBtn.classList.add('bg-emerald-500/20'); save(); }); }
+        if(lawyerBtn){ lawyerBtn.addEventListener('click',()=>{ const now=new Date(); const slot=`${now.toLocaleDateString()} @ ${now.getHours()+1}:00`; state.lawyer=slot; lawyerBtn.textContent=`Scheduled ${slot}`; lawyerBtn.classList.add('bg-emerald-500/20'); save(); }); }
+      })();
+    </script>
+    <!-- lightweight dropdowns -->
+    <div id="notifPanel" class="hidden fixed right-3 top-[78px] z-[70] w-72 rounded-xl border border-white/10 bg-neutral-950 shadow-xl p-3 text-sm">
+      <div class="flex items-center justify-between mb-1">
+        <strong class="text-sm">Notifications</strong>
+        <button id="notifClose" class="p-1 rounded hover:bg-white/5">✕</button>
+      </div>
+      <div class="text-neutral-400">No notifications</div>
+    </div>
+    <div id="profileMenu" class="hidden fixed right-3 top-[78px] z-[70] w-56 rounded-xl border border-white/10 bg-neutral-950 shadow-xl py-2 text-sm">
+      <a href="#" class="block px-3 py-2 hover:bg-white/5" data-profile>Profile</a>
+      <a href="#" class="block px-3 py-2 hover:bg-white/5" data-settings>Settings</a>
+      <a href="#" class="block px-3 py-2 hover:bg-white/5" data-appearance>Appearance</a>
+      <a href="#" class="block px-3 py-2 hover:bg-white/5" data-keys>API Keys</a>
+      <a href="#" class="block px-3 py-2 hover:bg-white/5" data-security>Security</a>
+      <div class="my-1 border-t border-white/10"></div>
+      <a href="#" class="block px-3 py-2 hover:bg-white/5" data-signin>Sign in</a>
+    </div>
+    <script>
+      (function(){
+        const np=document.getElementById('notifPanel');
+        const pm=document.getElementById('profileMenu');
+        const nb=document.getElementById('notifBtn');
+        const pb=document.getElementById('profileBtn');
+        const closeAll=()=>{ np.classList.add('hidden'); pm.classList.add('hidden'); };
+        if(nb){ nb.addEventListener('click',(e)=>{ e.stopPropagation(); pm.classList.add('hidden'); np.classList.toggle('hidden'); }); }
+        if(document.getElementById('notifClose')) document.getElementById('notifClose').addEventListener('click',closeAll);
+        if(pb){ pb.addEventListener('click',(e)=>{ e.stopPropagation(); np.classList.add('hidden'); pm.classList.toggle('hidden'); }); }
+        // Toast for signed-out notice (in-site, not a dialog)
+        function showToast(message){
+          let t=document.getElementById('siteToast');
+          if(!t){
+            t=document.createElement('div'); t.id='siteToast';
+            t.className='hidden fixed right-4 bottom-4 z-[80] max-w-sm rounded-xl border border-white/10 bg-neutral-900/95 backdrop-blur px-3 py-2 text-sm shadow-xl';
+            t.innerHTML='<div class="flex items-start gap-2"><span id="toastMsg" class="flex-1"></span><button id="toastX" class="p-1 rounded hover:bg-white/5">✕</button></div>';
+            document.body.appendChild(t);
+            document.getElementById('toastX').addEventListener('click',()=>t.classList.add('hidden'));
+          }
+          document.getElementById('toastMsg').textContent=message;
+          t.classList.remove('hidden');
+          clearTimeout(window.__nbToastTm); window.__nbToastTm=setTimeout(()=>t.classList.add('hidden'), 2500);
+        }
+        // Intercept all profile menu links to show signed-out notice
+        pm.addEventListener('click',(e)=>{
+          const a=e.target.closest('a'); if(!a) return; e.preventDefault(); closeAll();
+          showToast('You are not signed in. Sign in to access this feature.');
+        });
+        document.addEventListener('click',closeAll);
+      })();
+    </script>
+  </body>
+  </html>
+
+

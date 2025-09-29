@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Taxes · niggabase</title>
+  <style>
+    :root{--brown-0:#FCF5F0;--brown-10:#E3D1C0;--brown-40:#A37E66;--brown-50:#8B5E3C;--brown-60:#784F33;--bg:#0B0B0E;--panel:#111218;--muted:#A3A6B5;--text:#F5F6FA;--border:1px solid rgba(255,255,255,.07)}
+    html,body{height:100%}
+    body{margin:0;background:linear-gradient(0deg,rgba(139,94,60,.05),rgba(139,94,60,.05)),linear-gradient(180deg,#0A0A0D 0%,#0F0F14 100%);color:var(--text);font:400 14px/1.45 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial}
+    .app{display:grid;grid-template-columns:200px 1fr;min-height:100vh}
+    .side{background:linear-gradient(0deg,rgba(139,94,60,.05),rgba(139,94,60,.05)),#0D0E13;border-right:var(--border);display:flex;flex-direction:column;position:sticky;top:0;height:100vh;width:200px}
+    .side .logo{height:64px;display:flex;align-items:center;justify-content:flex-start;padding:0 12px;border-bottom:var(--border);box-sizing:border-box}
+    .cmark{width:28px;height:28px;border-radius:8px;background:var(--brown-50);display:grid;place-items:center}
+    .nav{padding:8px}
+    .nav a{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:12px;color:var(--text);text-decoration:none}
+    .nav a:hover{background:rgba(139,94,60,.08)}
+    .nav .ico{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px}
+    .nav .ico svg{width:20px;height:20px;stroke:#C6C8D5;stroke-width:1.75;fill:none}
+    .topbar{height:64px;display:flex;align-items:center;gap:12px;padding:0 24px;border-bottom:var(--border);background:linear-gradient(0deg,rgba(139,94,60,.05),rgba(139,94,60,.05)),rgba(20,14,10,.6)}
+    .content{padding:20px 24px}
+    .card{background:#111218;border:var(--border);border-radius:12px}
+    .card.pad{padding:16px}
+    .grid-2{display:grid;grid-template-columns:2fr 1fr;gap:16px}
+    .btn{border:0;border-radius:8px;padding:10px 14px;font-weight:600;cursor:pointer}
+    .btn-primary{background:var(--brown-50);color:#fff}
+    table{width:100%;border-collapse:separate;border-spacing:0}
+    th,td{padding:12px;border-bottom:var(--border)}
+    th{color:#A7A9B6;text-transform:uppercase;letter-spacing:.04em;font-size:10px}
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.body.innerHTML = `
+        <div class="app">
+          <aside class="side">
+            <div class="logo"><div class="cmark"></div><div class="brand" style="margin-left:8px;font-weight:900;font-size:18px;letter-spacing:-0.02em;background:linear-gradient(180deg,#A37E66,#784F33);-webkit-background-clip:text;color:transparent">Niggabase</div></div>
+            <nav class="nav">
+              <a href="brownbase-dashboard.html"><span class="ico"><svg viewBox="0 0 24 24"><path d="M3 10l9-7 9 7v9a2 2 0 0 1-2 2h-4v-7H9v7H5a2 2 0 0 1-2-2z"/></svg></span><span>Home</span></a>
+              <a href="assets.html"><span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6l3 3"/></svg></span><span>My assets</span></a>
+              <a href="transactions.html"><span class="ico"><svg viewBox="0 0 24 24"><path d="M7 7h10"/><path d="M7 7l3-3"/><path d="M17 17H7"/><path d="M17 17l-3 3"/></svg></span><span>Transactions</span></a>
+              <a href="explore.html"><span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M10 10l6-2-2 6-6 2 2-6z"/></svg></span><span>Explore</span></a>
+              <a href="derivatives.html"><span class="ico"><svg viewBox="0 0 24 24"><path d="M7 12h10"/><path d="M12 7v10"/></svg></span><span>Derivatives</span></a>
+              <a href="taxes.html" style="background:rgba(139,94,60,.18)"><span class="ico"><svg viewBox="0 0 24 24"><rect x="6" y="4" width="12" height="16" rx="2"/><path d="M9 9h6"/><path d="M9 13h6"/></svg></span><span>Taxes</span></a>
+              <a href="one.html"><span class="ico"><svg viewBox="0 0 24 24"><path d="M12 17l-5 3 2-6-5-4 6-.2L12 3l2 6.8 6 .2-5 4 2 6z"/></svg></span><span>niggabase One</span></a>
+              <a href="credit-card.html"><span class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18"/></svg></span><span>Credit card</span></a>
+              <a href="invite.html"><span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3"/><path d="M4 19a8 8 0 0 1 16 0"/><path d="M18 8h3"/><path d="M20.5 9.5v-3"/></svg></span><span>Invite friends</span></a>
+              <a href="debit-card.html"><span class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M7 14h4"/><path d="M5 10h14"/></svg></span><span>Debit card</span></a>
+              <a href="rewards.html"><span class="ico"><svg viewBox="0 0 24 24"><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M4 12h16"/><path d="M12 8V5"/></svg></span><span>Rewards</span></a>
+              <a href="more.html"><span class="ico"><svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg></span><span>More</span></a>
+            </nav>
+          </aside>
+          <section class="main">
+            <div class="topbar"><strong>Taxes</strong><div style="flex:1"></div></div>
+            <div class="content">
+              <div class="card pad">
+                <h3 style="margin-top:0">Export transactions</h3>
+                <p style="color:var(--muted)">Download a CSV you can import into TurboTax, Koinly, CoinTracker, or give straight to your accountant.</p>
+                <button class="btn btn-primary" id="export">Download CSV</button>
+                <div style="margin-top:12px;color:var(--muted);font-size:12px">Includes: date, type, asset, amount, status.</div>
+              </div>
+              <div class="card pad" style="margin-top:16px">
+                <h3 style="margin-top:0">Summary</h3>
+                <table>
+                  <tbody>
+                    <tr><td>Total trades</td><td id="sum-trades" style="text-align:right">0</td></tr>
+                    <tr><td>Realized P&L (est.)</td><td id="sum-pnl" style="text-align:right">$0</td></tr>
+                    <tr><td>Income (staking/airdrop)</td><td id="sum-income" style="text-align:right">$0</td></tr>
+                    <tr><td>Fees paid</td><td id="sum-fees" style="text-align:right">$0</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="card pad" style="margin-top:16px">
+                <h3 style="margin-top:0">Tax tips</h3>
+                <ul style="margin:0 0 0 18px;line-height:1.6;color:var(--muted)">
+                  <li>Keep detailed records of buys, sells, and transfers.</li>
+                  <li>Transfers between your own wallets are non-taxable.</li>
+                  <li>Use dollar-cost averaging to simplify cost basis.</li>
+                  <li>Holding over 12 months may qualify for long-term rates.</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+        </div>`;
+
+      const rows = JSON.parse(localStorage.getItem('bb-txns')||'[]');
+      document.getElementById('export').onclick=()=>{
+        const csv=['date,type,asset,amount,status',...rows.map(r=>`${r.date},${r.type},${r.asset},${r.amount},${r.status}`)].join('\n');
+        const blob=new Blob([csv],{type:'text/csv'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='transactions.csv'; a.click(); URL.revokeObjectURL(a.href);
+      };
+      const sum={trades:rows.length,pnl:0,income:0,fees:Math.max(0,rows.length*0.5)};
+      document.getElementById('sum-trades').textContent=sum.trades;
+      document.getElementById('sum-pnl').textContent=`$${sum.pnl.toLocaleString(undefined,{maximumFractionDigits:2})}`;
+      document.getElementById('sum-income').textContent=`$${sum.income.toLocaleString(undefined,{maximumFractionDigits:2})}`;
+      document.getElementById('sum-fees').textContent=`$${sum.fees.toLocaleString(undefined,{maximumFractionDigits:2})}`;
+    });
+  </script>
+</head>
+<body></body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Taxes · niggabase</title>
+  <style>
+    :root{
+      --brown-0:#FCF5F0; --brown-10:#E3D1C0; --brown-20:#C8AD95; --brown-30:#B6957D; --brown-40:#A37E66; --brown-50:#8B5E3C; --brown-60:#784F33; --brown-70:#61402A; --brown-80:#503524; --brown-90:#3C291C; --brown-100:#281C12;
+      --bg:#0B0B0E; --panel:#111218; --panel-2:#0E0F15; --muted:#A3A6B5; --text:#F5F6FA; --text-weak:#C8CAD6;
+      --ok:#22C55E; --warn:#EAB308; --danger:#EF4444; --primary:var(--brown-50);
+      --border:1px solid rgba(255,255,255,.07);
+    }
+    html,body{height:100%}
+    body{margin:0;background:linear-gradient(0deg,rgba(139,94,60,.05),rgba(139,94,60,.05)),linear-gradient(180deg,#0A0A0D 0%,#0F0F14 100%);color:var(--text);font:400 14px/1.45 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial}
+    .app{display:grid;grid-template-columns:200px 1fr;min-height:100vh;zoom:1.15}
+    .side{background:linear-gradient(0deg,rgba(139,94,60,.05),rgba(139,94,60,.05)),#0D0E13;border-right:var(--border);display:flex;flex-direction:column;position:sticky;top:0;height:100vh;width:200px}
+    .side .logo{height:64px;display:flex;align-items:center;justify-content:flex-start;padding:0 12px;border-bottom:var(--border);box-sizing:border-box}
+    .cmark{width:28px;height:28px;border-radius:8px;background:var(--primary);display:grid;place-items:center}
+    .nav{padding:8px}
+    .nav a{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:12px;color:var(--text);text-decoration:none}
+    .nav a:hover{background:rgba(139,94,60,.08)}
+    .nav .label{display:block}
+    .nav .ico{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px}
+    .nav .ico svg{width:20px;height:20px;stroke:#C6C8D5;stroke-width:1.75;fill:none}
+    .main{display:flex;flex-direction:column}
+    .topbar{height:64px;display:flex;align-items:center;gap:12px;padding:0 24px;border-bottom:var(--border);background:linear-gradient(0deg,rgba(139,94,60,.05),rgba(139,94,60,.05)),rgba(20,14,10,.6);backdrop-filter:saturate(140%) blur(10px)}
+    .content{padding:20px 24px}
+    .card{background:#111218;border:var(--border);border-radius:12px}
+    .card.pad{padding:16px}
+    .banner{display:flex;align-items:center;gap:12px;padding:14px;border-radius:12px;background:linear-gradient(180deg,#14141D 0%,#0E0E14 100%);border:var(--border);margin-bottom:16px}
+    .grid-2{display:grid;grid-template-columns:2fr 1fr;gap:16px}
+    .field{margin:10px 0}
+    .field input,.field select{width:100%;padding:10px;border-radius:8px;background:#0D0F16;border:var(--border);color:var(--text)}
+    .btn{border:0;border-radius:8px;padding:10px 14px;font-weight:600;cursor:pointer}
+    .btn-primary{background:var(--primary);color:#fff}
+    table{width:100%;border-collapse:separate;border-spacing:0}
+    th,td{padding:12px;border-bottom:var(--border)}
+    th{color:#A7A9B6;text-transform:uppercase;letter-spacing:.04em;font-size:10px}
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.body.innerHTML = `
+        <div class="app">
+          <aside class="side">
+            <div class="logo"><div class="cmark"><svg viewBox="0 0 24 24"><path d="M12 2.5a9.5 9.5 0 1 0 0 19 9.5 9.5 0 0 0 0-19Z"/></svg></div><div class="brand" style="margin-left:8px;font-weight:900;font-size:18px;letter-spacing:-0.02em;background:linear-gradient(180deg,#A37E66,#784F33);-webkit-background-clip:text;color:transparent">Niggabase</div></div>
+            <nav class="nav">
+              <a href="niggabase.html"><span class="ico"><svg viewBox="0 0 24 24"><path d="M3 10l9-7 9 7v9a2 2 0 0 1-2 2h-4v-7H9v7H5a2 2 0 0 1-2-2z"/></svg></span><span class="label">Home</span></a>
+              <a href="assets.html"><span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6l3 3"/></svg></span><span class="label">My assets</span></a>
+              <a href="explore.html"><span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M10 10l6-2-2 6-6 2 2-6z"/></svg></span><span class="label">Explore</span></a>
+              <a href="one.html"><span class="ico"><svg viewBox="0 0 24 24"><path d="M12 17l-5 3 2-6-5-4 6-.2L12 3l2 6.8 6 .2-5 4 2 6z"/></svg></span><span class="label">niggabase One</span></a>
+              <a href="credit-card.html"><span class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18"/></svg></span><span class="label">Credit card</span></a>
+              <a href="rewards.html"><span class="ico"><svg viewBox="0 0 24 24"><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M4 12h16"/><path d="M12 8V5"/></svg></span><span class="label">Rewards</span></a>
+              <a href="more.html"><span class="ico"><svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg></span><span class="label">More</span></a>
+            </nav>
+          </aside>
+          <section class="main">
+            <div class="topbar"><strong>Taxes</strong><div style="flex:1"></div></div>
+            <div class="content">
+              <div class="banner"><span>🧾</span><div><div style="font-weight:700">Taxes: Handle yo business like a grown boss</div><div style="color:#A3A6B5;font-size:12px">Exports, summaries, and tools to keep you right with the law.</div></div></div>
+              <div class="grid-2">
+                <div class="card pad">
+                  <h3 style="margin-top:0">Export transactions</h3>
+                  <p style="color:#A3A6B5">Download a CSV you can import into TurboTax, Koinly, CoinTracker, or give straight to your accountant.</p>
+                  <button class="btn btn-primary" id="export">Download CSV</button>
+                  <div style="margin-top:12px;color:#A3A6B5;font-size:12px">Includes: date, type, asset, amount, status.</div>
+                </div>
+                <div class="card pad">
+                  <h3 style="margin-top:0">Summary</h3>
+                  <table>
+                    <tbody>
+                      <tr><td>Total trades</td><td id="sum-trades" style="text-align:right">0</td></tr>
+                      <tr><td>Realized P&L (est.)</td><td id="sum-pnl" style="text-align:right">$0</td></tr>
+                      <tr><td>Income (staking/airdrop)</td><td id="sum-income" style="text-align:right">$0</td></tr>
+                      <tr><td>Fees paid</td><td id="sum-fees" style="text-align:right">$0</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="card pad" style="margin-top:16px">
+                <h3 style="margin-top:0">Tax tips</h3>
+                <ul style="margin:0 0 0 18px;line-height:1.6;color:#A3A6B5">
+                  <li>Keep detailed records of buys, sells, and transfers.</li>
+                  <li>Transfers between your own wallets are non-taxable.</li>
+                  <li>Use dollar-cost averaging to simplify cost basis.</li>
+                  <li>Holding over 12 months may qualify for long-term rates.</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+        </div>`;
+
+      // Export logic
+      const rows = JSON.parse(localStorage.getItem('bb-txns')||'[]');
+      document.getElementById('export').onclick=()=>{
+        const csv=['date,type,asset,amount,status',...rows.map(r=>`${r.date},${r.type},${r.asset},${r.amount},${r.status}`)].join('\n');
+        const blob=new Blob([csv],{type:'text/csv'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='transactions.csv'; a.click(); URL.revokeObjectURL(a.href);
+      };
+
+      // Summary
+      const sum = {
+        trades: rows.length,
+        pnl: 0,
+        income: 0,
+        fees: Math.max(0, rows.length*0.5)
+      };
+      document.getElementById('sum-trades').textContent = sum.trades;
+      document.getElementById('sum-pnl').textContent = `$${sum.pnl.toLocaleString(undefined,{maximumFractionDigits:2})}`;
+      document.getElementById('sum-income').textContent = `$${sum.income.toLocaleString(undefined,{maximumFractionDigits:2})}`;
+      document.getElementById('sum-fees').textContent = `$${sum.fees.toLocaleString(undefined,{maximumFractionDigits:2})}`;
+    });
+  </script>
+</head>
+<body></body>
+</html>
+

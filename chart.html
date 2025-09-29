@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title id="pageTitle">Asset · Niggabase</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script defer src="assets/tw-fallback.js"></script>
+    <style>
+      :root{--brown-40:#A37E66; --brown-50:#8B5E3C; --brown-60:#784F33}
+      body{font-family:Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial}
+      .brand-gradient{background:linear-gradient(180deg,var(--brown-40),var(--brown-60));-webkit-background-clip:text;background-clip:text;color:transparent}
+    </style>
+  </head>
+  <body class="bg-neutral-950 text-neutral-200 antialiased">
+    <div class="h-screen w-full flex overflow-hidden">
+      <!-- Sidebar -->
+      <aside class="hidden lg:flex w-64 flex-col border-r border-white/10 bg-neutral-950/95 backdrop-blur-sm">
+        <div class="h-16 flex items-center px-5 border-b border-white/10">
+          <img src="assets/Niggabase%20Logo.png" alt="Niggabase" class="w-8 h-8 rounded-lg object-contain"/>
+          <span class="ml-3 text-lg font-black tracking-tight brand-gradient">Niggabase</span>
+        </div>
+        <nav class="flex-1 overflow-y-auto px-2 py-3">
+          <ul class="space-y-1 text-sm">
+            <li><a href="niggabase.html" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-white/5"><i data-lucide="home" class="w-5 h-5"></i><span>Home</span></a></li>
+            <li><a href="assets.html" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-white/5"><i data-lucide="wallet" class="w-5 h-5"></i><span>My assets</span></a></li>
+            <li><a href="explore.html" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-white/5"><i data-lucide="compass" class="w-5 h-5"></i><span>Explore</span></a></li>
+            <li><a href="one.html" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-white/5"><i data-lucide="medal" class="w-5 h-5"></i><span>Niggabase One</span></a></li>
+            <li><a href="credit-card.html" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-white/5"><i data-lucide="credit-card" class="w-5 h-5"></i><span>Nigga Card</span></a></li>
+            <li><a href="rewards.html" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-white/5"><i data-lucide="gift" class="w-5 h-5"></i><span>Rewards</span></a></li>
+          </ul>
+        </nav>
+        <div class="p-3 border-t border-white/10">
+          <button class="w-full flex items-center justify-between px-3 py-2 rounded-lg bg-white/5">
+            <span class="text-xs text-neutral-300">Advanced</span>
+            <span class="inline-flex items-center gap-1 text-xs text-neutral-300"><span class="w-2 h-2 rounded-full bg-emerald-400"></span> On</span>
+          </button>
+        </div>
+      </aside>
+
+      <!-- Main content -->
+      <main class="flex-1 flex flex-col min-w-0">
+        <div class="h-[75px] border-b border-white/10 flex items-center justify-between px-3 sm:px-6 bg-neutral-950/70 backdrop-blur-md">
+          <h1 id="title" class="text-xl font-semibold">Asset</h1>
+          <div class="flex items-center gap-2">
+            <button class="p-2 rounded-full hover:bg-white/5 relative"><i data-lucide="bell" class="w-5 h-5"></i><span class="absolute -top-0.5 -right-0.5 w-4 h-4 text-[10px] bg-rose-500 text-white rounded-full flex items-center justify-center">2</span></button>
+            <div class="w-8 h-8 rounded-full bg-white/10 grid place-items-center"><span class="text-sm font-medium">D</span></div>
+          </div>
+        </div>
+
+        <div class="flex-1 overflow-y-auto">
+          <div class="grid grid-cols-1 xl:grid-cols-[1fr_392px] gap-6 px-3 sm:px-6 py-6">
+            <!-- Left column -->
+            <section class="space-y-6 min-w-0">
+              <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+                <div class="flex items-center gap-3">
+                  <div id="logo" class="w-10 h-10 rounded-lg bg-white/10 grid place-items-center">₿</div>
+                  <div>
+                    <div id="name" class="text-lg font-semibold">Asset</div>
+                    <div id="symbol" class="text-xs text-neutral-400">SYM</div>
+                  </div>
+                  <div class="ml-auto text-right">
+                    <div id="price" class="text-lg font-semibold">$0.00</div>
+                    <div id="change" class="text-xs text-emerald-400">+0.00% (24h)</div>
+                  </div>
+                </div>
+                <div class="mt-4">
+                  <div id="tfs" class="mb-3 flex flex-wrap gap-2 text-xs">
+                    <button data-tf="1h" class="px-2.5 py-1.5 rounded bg-white/5 hover:bg-white/10">1H</button>
+                    <button data-tf="1d" class="px-2.5 py-1.5 rounded bg-white/10 text-white">1D</button>
+                    <button data-tf="1w" class="px-2.5 py-1.5 rounded bg-white/5 hover:bg-white/10">1W</button>
+                    <button data-tf="1m" class="px-2.5 py-1.5 rounded bg-white/5 hover:bg-white/10">1M</button>
+                    <button data-tf="3m" class="px-2.5 py-1.5 rounded bg-white/5 hover:bg-white/10">3M</button>
+                    <button data-tf="1y" class="px-2.5 py-1.5 rounded bg-white/5 hover:bg-white/10">1Y</button>
+                    <button data-tf="all" class="px-2.5 py-1.5 rounded bg-white/5 hover:bg-white/10">ALL</button>
+                  </div>
+                  <div class="h-64"><canvas id="assetChart"></canvas></div>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-4 gap-4 text-sm">
+                <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-4"><div class="text-neutral-400 text-xs">Market Cap</div><div id="cap" class="mt-1">$0.00</div></div>
+                <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-4"><div class="text-neutral-400 text-xs">Volume (24h)</div><div id="vol" class="mt-1">$0.00</div></div>
+                <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-4"><div class="text-neutral-400 text-xs">Supply</div><div id="sup" class="mt-1">0</div></div>
+                <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-4"><div class="text-neutral-400 text-xs">ATH</div><div id="ath2" class="mt-1">$0</div></div>
+              </div>
+
+              <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+                <div class="text-sm font-semibold">About <span id="aboutName">Asset</span></div>
+                <p id="aboutText" class="mt-2 text-sm text-neutral-400">Loading…</p>
+              </div>
+            </section>
+
+            <!-- Right trade panel (full height like home) -->
+            <aside class="border border-white/10 bg-white/[0.03] p-4 sticky top-0 h-screen -mt-6 flex flex-col overflow-y-auto">
+              <div class="flex items-center justify-between">
+                <div class="inline-flex items-center gap-2 rounded-full bg-white/5 p-1">
+                  <button class="px-3 py-1.5 text-xs rounded-full bg-white/10 trade-tab" data-tab="Buy">Buy</button>
+                  <button class="px-3 py-1.5 text-xs rounded-full hover:bg-white/5 trade-tab" data-tab="Sell">Sell</button>
+                  <button class="px-3 py-1.5 text-xs rounded-full hover:bg-white/5 trade-tab" data-tab="Convert">Convert</button>
+                </div>
+                <div class="relative">
+                  <button id="orderTypeBtn" class="inline-flex items-center gap-1 px-3 py-1.5 text-xs rounded-full bg-white/5 hover:bg-white/10">
+                    <span id="orderTypeLabel">One-time order</span>
+                    <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                  </button>
+                  <div id="orderTypeMenu" class="hidden absolute right-0 mt-2 w-44 rounded-lg border border-white/10 bg-neutral-950 shadow-xl">
+                    <button class="w-full text-left px-3 py-2 text-sm hover:bg-white/5 order-type" data-type="One-time order">One-time order</button>
+                    <button class="w-full text-left px-3 py-2 text-sm hover:bg-white/5 order-type" data-type="Recurring (weekly)">Recurring (weekly)</button>
+                    <button class="w-full text-left px-3 py-2 text-sm hover:bg-white/5 order-type" data-type="Recurring (monthly)">Recurring (monthly)</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-6">
+                <div class="flex items-baseline gap-2">
+                  <input id="tradeAmount" inputmode="decimal" placeholder="0" class="bg-transparent text-[40px] sm:text-5xl font-medium tracking-tight w-40 focus:outline-none" />
+                  <span class="text-2xl sm:text-3xl tracking-tight font-medium text-neutral-400">USD</span>
+                  <button id="amountMax" class="ml-auto px-2.5 py-1.5 rounded-full bg-white/5 hover:bg-white/10 text-xs">Max</button>
+                </div>
+                <div class="mt-1 text-xs inline-flex items-center gap-1"><i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-indigo-400"></i><span id="amountEstimate" class="text-indigo-400">0</span></div>
+              </div>
+
+              <div class="mt-6 space-y-3">
+                <button id="fundingBtn" class="w-full flex items-center justify-between p-3 rounded-xl bg-white/5 hover:bg-white/10">
+                  <span class="inline-flex items-center gap-2">
+                    <span class="w-8 h-8 rounded-lg bg-emerald-500/20 flex items-center justify-center">
+                      <i data-lucide="credit-card" class="w-4 h-4 text-emerald-400"></i>
+                    </span>
+                    <span class="text-left">
+                      <span class="text-sm">Pay with</span>
+                      <span id="fundingLabel" class="block text-xs text-neutral-400">EBT</span>
+                    </span>
+                  </span>
+                  <span class="text-right">
+                    <span id="cashAvailable" class="block text-sm">$0.00</span>
+                    <span class="block text-xs text-neutral-500">Available</span>
+                  </span>
+                </button>
+                <button id="assetBtn" class="w-full flex items-center justify-between p-3 rounded-xl bg-white/5 hover:bg-white/10">
+                  <span class="inline-flex items-center gap-2">
+                    <span class="w-8 h-8 rounded-lg bg-amber-500/20 flex items-center justify-center">
+                      <i data-lucide="bitcoin" class="w-4 h-4 text-amber-400"></i>
+                    </span>
+                    <span class="text-left">
+                      <span id="assetAction" class="text-sm">Buy</span>
+                      <span id="assetLabel" class="block text-xs text-neutral-400">Asset</span>
+                    </span>
+                  </span>
+                  <i data-lucide="chevron-right" class="w-4 h-4 text-neutral-500"></i>
+                </button>
+              </div>
+
+              <button id="reviewOrderBtn" class="mt-6 w-full rounded-full bg-[color:var(--brown-50)] hover:bg-[color:var(--brown-60)] transition-colors text-sm font-semibold py-3 disabled:opacity-50 disabled:cursor-not-allowed">Review order</button>
+            </aside>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script>
+      lucide.createIcons({ attrs: { 'stroke-width': 1.5 } });
+      const $=(s,r=document)=>r.querySelector(s); const $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+      const fmt=(n)=>'$'+Number(n).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});
+      const fmtCrypto=(n,sym)=>`${Number(n).toFixed(8).replace(/\.?0+$/,'')} ${sym}`;
+
+      // Params
+      const url=new URLSearchParams(location.search);
+      const sym=(url.get('symbol')||'BTC').toUpperCase();
+      const nm=url.get('name')||'Bitcoin';
+      const img=url.get('img')||'';
+
+      document.title = `${nm} · Niggabase`;
+      $('#pageTitle').textContent = `${nm} · Niggabase`;
+      $('#title').textContent = `${nm} · Niggabase`;
+      $('#name').textContent=nm; $('#symbol').textContent=sym; $('#aboutName').textContent=nm; $('#assetLabel').textContent=nm;
+      if(img) $('#logo').innerHTML=`<img src="${img}" class="w-10 h-10 rounded-lg">`;
+
+      // Demo pricing and stats
+      // If a price param was provided from main page, parse it and use as anchor
+      const pParam = (url.get('p')||'').replace(/[^0-9.]/g,'');
+      const price = pParam ? parseFloat(pParam)||100 : 100+Math.random()*500;
+      const ch=(Math.random()*2-1)*10;
+      $('#price').textContent=fmt(price);
+      $('#change').textContent=`${ch>=0?'+':''}${ch.toFixed(2)}% (24h)`;
+      $('#change').className=`text-xs ${ch>=0?'text-emerald-400':'text-rose-400'}`;
+      $('#cap').textContent=`$${(Math.random()*2+0.1).toFixed(2)}T`;
+      $('#vol').textContent=`$${(Math.random()*100).toFixed(1)}B`;
+      $('#sup').textContent=`${(Math.random()*500+10).toFixed(1)}M ${sym}`;
+      $('#ath2').textContent=`$${(100+Math.random()*50000).toFixed(0)}`;
+
+      // Chart.js — generate a more realistic price path (GBM + light smoothing)
+      function randn(){
+        // Box-Muller
+        let u=0,v=0; while(u===0) u=Math.random(); while(v===0) v=Math.random();
+        return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v);
+      }
+      function gbmSeries(len, start, drift=0.0004, vol=0.02){
+        const out=[]; let s=start; const dt=1/len;
+        for(let i=0;i<len;i++){
+          const shock = (Math.random()<0.02? (randn()*0.05) : 0); // rare jumps
+          const z = randn();
+          const step = (drift-0.5*vol*vol)*dt + vol*Math.sqrt(dt)*z + shock;
+          s = Math.max(0.01, s*Math.exp(step));
+          out.push(s);
+        }
+        return out;
+      }
+      function ema(arr, span=14){
+        const k=2/(span+1); const out=[]; let e=arr[0];
+        for(let i=0;i<arr.length;i++){ e = i===0? arr[0] : (arr[i]-e)*k + e; out.push(e);} return out;
+      }
+      function buildChart(tf){
+        const lenMap={ '1h':120, '1d':240, '1w':360, '1m':480, '3m':640, '1y':960, 'all':1200 };
+        const driftMap={ '1h':0.0001, '1d':0.00025, '1w':0.0003, '1m':0.00035, '3m':0.0004, '1y':0.00045, 'all':0.0005 };
+        const volMap={ '1h':0.02, '1d':0.03, '1w':0.035, '1m':0.04, '3m':0.045, '1y':0.05, 'all':0.055 };
+        const L=lenMap[tf]||240; const d=driftMap[tf]||0.00025; const v=volMap[tf]||0.03;
+        const labels = Array.from({length:L},(_,i)=>i+1);
+        const series = gbmSeries(labels.length, price, d, v);
+        const ma = ema(series, Math.max(10, Math.round(L*0.07)));
+        return { labels, series, ma };
+      }
+      let currentTf='1d';
+      const dataSet = buildChart(currentTf);
+      const chart = new Chart($('#assetChart'),{
+        type:'line',
+        data:{labels:dataSet.labels,datasets:[
+          {
+            label:'Price',
+            data:dataSet.series,
+            borderColor:'#CBA17F', pointRadius:0, tension:.35, fill:true,
+            backgroundColor:(c)=>{const g=c.chart.ctx.createLinearGradient(0,0,0,c.chart.height); g.addColorStop(0,'rgba(203,161,127,.35)'); g.addColorStop(1,'rgba(203,161,127,0)'); return g;}
+          },
+          {
+            label:'EMA',
+            data:dataSet.ma,
+            borderColor:'#94a3b8', pointRadius:0, tension:.25, fill:false
+          }
+        ]},
+        options:{
+          responsive:true, maintainAspectRatio:false,
+          plugins:{legend:{display:false}},
+          scales:{
+            x:{display:false},
+            y:{display:true, grid:{color:'rgba(255,255,255,.06)'}}
+          }
+        }
+      });
+
+      // Timeframe buttons
+      document.querySelectorAll('#tfs [data-tf]').forEach(btn=>{
+        btn.addEventListener('click',()=>{
+          const tf = btn.getAttribute('data-tf');
+          if (tf === currentTf) { return; }
+          document.querySelectorAll('#tfs [data-tf]').forEach(b=>b.classList.remove('bg-white/10','text-white'));
+          btn.classList.add('bg-white/10','text-white');
+          currentTf = tf;
+          const d = buildChart(currentTf);
+          chart.data.labels = d.labels;
+          chart.data.datasets[0].data = d.series;
+          chart.data.datasets[1].data = d.ma;
+          chart.update();
+        });
+      });
+
+      // About mapping
+      const aboutMap={
+        KFC: "KFC straight owns the fried chicken game, slangin' buckets to niggas fiendin' after a long day hustlin'. Price jumps when the block's starvin', but crashes if some healthy shit trends. That 2.2T cap? All from greasy fingers and late-night runs. Cop this if you want that poultry paper, but don't sleep on the heart attack tax eatin' your gains.",
+        KOOLAID: "KOOLAID got the hood on lock with that red dye drank, mixin' up packs for pennies and chargin' like it's premium. Shares drop when moms cut the sugar, but spike at cookouts or when heat waves hit the projects. 2.2T cap cuz every trap house got a pitcher ready. Flip this for cheap thirst traps, but water it down or your stack gets too sticky.",
+        HELLCAT: "HELLCAT the king of them demon engines, pullin' up with supercharged smoke, leavin' cops in the dust on the strip. Gains rev when niggas flex on IG, but stall on fuel prices or emissions snitches. That trillion cap from speed demons and street kings. Grab this for burnout bags, but push too hard and your portfolio's spinnin' out.",
+        LEAN: "LEAN the purple plug trust, pourin' up codeine dreams that got niggas leanin' slow in the trap. Price slumps on dry seasons or fed raids, but moons when tracks drop mentionin' sizzurp. 2.2T cap from underground sips. Invest for that nod-off net worth, but double cup too much and your funds fade like the high.",
+        PERCS: "PERCS partnerin' on them oxycodone 30s, capitalizin' off pain pills that numb the struggle. Shares rise on back alley deals or injury spikes, but tank when scripts get tight or ODs make news. Trillion cap cuz relief's always in demand. Hustle this for quick pop profits, but get hooked and watch your capital OD.",
+        XAN: "XAN futures bettin' on bars to calm the hood nerves, 2mg escapes from daily beef and bills. Price dips on chill vibes or benzo crackdowns, but pumps durin' high-stress blocks like tax time. Massive cap from silent grinds. Lock in for anti-freakout futures, but bar out and your bag's blacked out.",
+        CODEINE: "CODEINE index trackin' that prometh cough wave, essential for lean mixes and slow trap nights. Gains bubble on flu outbreaks or rapper endorsements, but cough up losses on legal droughts. 2.2T cap from sippin' culture. Bottle up for viscous value, but strain it wrong and your index is hacked up.",
+        OXY: "OXY options givin' choices on oxy empires, from scripts to street flips with them 80s. Price opts higher on chronic pain waves or doc shortages, but withdraws hard on narcan narratives. Huge cap cuz the game's addictive. Choose wisely for opioid options, but misstep and face a withdrawal wipeout.",
+        MOLLY: "MOLLY labs engineerin' that MDMA roll, testin' pure e for turn-up nights and love sessions. Shares peak on club reopenings or festival lineups, but crash on comedowns or bad press. Trillion cap from party fiends. Cook this for ecstatic equity, but roll too often and Tuesday's hittin' your holdings hard.",
+        ZAZA: "ZAZA fund packin' exotic za strains, fundin' the green game with premium buds for the real smokers. Price inflates on harvest highs or legal green lights, but deflates on busts or mids floods. Solid cap from chronic chiefs. Pack it for hazy highs in your portfolio, but puff-pass wrong and burn through your za stack."
+      };
+      $('#aboutText').textContent = aboutMap[sym] || 'Parody asset. No real gains promised.';
+
+      // Trade panel state (EBT default)
+      const state={cashUSD:0, prices:{[sym]:price}, holdings:{[sym]:0}, order:{side:'Buy', type:'One-time order', funding:'EBT', asset:sym}};
+      function renderTrade(){
+        $('#fundingLabel').textContent=state.order.funding; $('#orderTypeLabel').textContent=state.order.type; $('#assetLabel').textContent=nm; $('#assetAction').textContent=state.order.side; $('#cashAvailable').textContent=fmt(state.cashUSD);
+        const amt=parseFloat($('#tradeAmount').value||'0')||0; const p=state.prices[state.order.asset]||price; let txt='0', ok=true;
+        if(state.order.side==='Buy'){txt=fmtCrypto(p?amt/p:0, state.order.asset); ok=amt>0;} else if(state.order.side==='Sell'){txt=fmt(amt); ok=amt>0 && state.holdings[state.order.asset]>=(p?amt/p:0);} else {txt='Conversion preview'; ok=false}
+        $('#amountEstimate').textContent=txt; $('#reviewOrderBtn').disabled=!ok;
+      }
+      $$('.trade-tab').forEach(b=>b.addEventListener('click',()=>{$$('.trade-tab').forEach(x=>x.classList.remove('bg-white/10')); b.classList.add('bg-white/10'); state.order.side=b.dataset.tab; renderTrade();}));
+      $('#orderTypeBtn').addEventListener('click',(e)=>{e.stopPropagation(); $('#orderTypeMenu').classList.toggle('hidden');});
+      $$('#orderTypeMenu .order-type').forEach(b=>b.addEventListener('click',()=>{state.order.type=b.dataset.type; $('#orderTypeMenu').classList.add('hidden'); renderTrade();}));
+      document.addEventListener('click',()=>$('#orderTypeMenu').classList.add('hidden'));
+      $('#tradeAmount').addEventListener('input',renderTrade);
+      $('#amountMax').addEventListener('click',()=>{$('#tradeAmount').value=state.cashUSD.toFixed(2); renderTrade();});
+      $('#reviewOrderBtn').addEventListener('click',()=>{alert(`${state.order.side} ${nm} for ${fmt(parseFloat($('#tradeAmount').value||'0')||0)} — ${state.order.type} via ${state.order.funding}`)});
+      renderTrade();
+    </script>
+  </body>
+</html>

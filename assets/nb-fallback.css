@@ -1,0 +1,18 @@
+/* Minimal structural fallback so pages render even if Tailwind fails */
+html,body{height:100%}
+body{margin:0;background:#0b0b0e;color:#e5e7eb}
+/* App wrapper */
+body>div:first-of-type{display:flex;min-height:100vh;height:100vh;overflow:hidden}
+/* Sidebar */
+body>div:first-of-type>aside{width:256px;flex:0 0 256px;border-right:1px solid rgba(255,255,255,.1);background:#0b0b0e}
+/* Main */
+body>div:first-of-type>main{flex:1 1 auto;display:flex;flex-direction:column;min-width:0}
+/* Topbar */
+body>div:first-of-type>main>div:first-child{height:75px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;border-bottom:1px solid rgba(255,255,255,.1);background:rgba(12,12,14,.7);backdrop-filter:blur(6px)}
+/* Content scroll */
+body>div:first-of-type>main>div:nth-child(2){flex:1 1 auto;overflow:auto}
+/* Basic anchor/button visibility */
+a,button{color:inherit}
+/* Prevent giant imgs if utilities missing */
+img{max-width:100%;height:auto}
+

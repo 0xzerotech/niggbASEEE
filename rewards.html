@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rewards · $NIGGABASE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script defer src="assets/tw-fallback.js"></script>
+  <style>
+    :root{ --brown-40:#A37E66; --brown-50:#8B5E3C; --brown-60:#784F33; }
+    .brand-gradient{background:linear-gradient(180deg,var(--brown-40),var(--brown-60));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .brown-tint{background-image:linear-gradient(0deg,rgba(139,94,60,.08),rgba(139,94,60,.08));}
+  </style>
+</head>
+<body class="bg-neutral-950 text-neutral-200 antialiased brown-tint" style="font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial;">
+  <div class="h-screen w-full flex overflow-hidden">
+    <!-- Sidebar -->
+    <aside class="hidden lg:flex w-64 flex-col border-r border-white/10 bg-neutral-950/95 backdrop-blur-sm">
+      <div class="h-16 flex items-center px-5 border-b border-white/10">
+        <img src="C:\\Users\\DAVID\\Downloads\\niggabase\\niggabase\\assets\\niggabase logo.png" alt="Niggabase" class="w-8 h-8 rounded-lg object-contain"/>
+        <span class="ml-3 text-lg font-black tracking-tight brand-gradient" style="letter-spacing:-0.02em">Niggabase</span>
+      </div>
+      <nav class="flex-1 overflow-y-auto px-2 py-3">
+        <ul class="space-y-1" id="navList">
+          <li><a href="niggabase.html" class="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-white/5"><i data-lucide="home" class="w-5 h-5"></i><span class="text-sm">Home</span></a></li>
+          <li><a href="assets.html" class="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-white/5"><i data-lucide="wallet" class="w-5 h-5"></i><span class="text-sm">My assets</span></a></li>
+          <li><a href="one.html" class="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-white/5"><i data-lucide="medal" class="w-5 h-5"></i><span class="text-sm">niggabase One</span></a></li>
+          <li><a href="credit-card.html" class="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-white/5"><i data-lucide="credit-card" class="w-5 h-5"></i><span class="text-sm">Nigga Card</span></a></li>
+          <li><a href="#" class="w-full flex items-center gap-3 px-3 py-2 rounded-lg bg-white/5 text-white"><i data-lucide="gift" class="w-5 h-5"></i><span class="text-sm font-medium">Rewards</span></a></li>
+          <li><a href="explore.html" class="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-white/5"><i data-lucide="compass" class="w-5 h-5"></i><span class="text-sm">Explore</span></a></li>
+        </ul>
+      </nav>
+      <div class="p-3 border-t border-white/10">
+        <button class="w-full flex items-center justify-between px-3 py-2 rounded-lg bg-white/5 hover:bg-white/10">
+          <span class="text-xs text-neutral-300">Advanced</span>
+          <span class="inline-flex items-center gap-1 text-xs text-neutral-300"><span class="w-2 h-2 rounded-full bg-emerald-400"></span> On</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main content -->
+    <main class="flex-1 flex flex-col min-w-0">
+      <div class="h-16 border-b border-white/10 flex items-center justify-between px-3 sm:px-6">
+        <h1 class="text-2xl font-semibold tracking-tight">$NIGGABASE Rewards</h1>
+      </div>
+      <div class="flex-1 overflow-y-auto">
+        <div class="px-3 sm:px-6 py-6 space-y-6">
+          <!-- HERO BALANCE -->
+          <section class="rounded-2xl border border-white/10 bg-white/[0.03] p-5 sm:p-6">
+            <div class="flex items-center justify-between flex-wrap gap-4">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-lg bg-[color:var(--brown-50)]/20 grid place-items-center"><i data-lucide="coins" class="w-5 h-5 text-[color:var(--brown-40)]"></i></div>
+                <div>
+                  <div class="text-xs text-neutral-400">Season 1 · Airdrop accrual</div>
+                  <div class="text-2xl font-semibold tracking-tight" id="balLine">0 $NIGGABASE</div>
+                </div>
+              </div>
+              <div class="flex items-center gap-2 text-sm">
+                <button id="howItWorks" class="px-3 py-2 rounded-lg bg-white/5 hover:bg-white/10">How it works</button>
+                <a href="early-access.html" class="px-3 py-2 rounded-lg bg-indigo-500 hover:bg-indigo-600">Early access</a>
+              </div>
+            </div>
+            <div class="mt-2 text-xs text-neutral-500">This is a preview of how $NIGGABASE rewards could look eventually.</div>
+            <div class="mt-4">
+              <div class="h-2 rounded-full bg-white/5 overflow-hidden"><div id="seasonProg" class="h-full bg-[color:var(--brown-50)]" style="width:0%"></div></div>
+              <div class="mt-1 text-xs text-neutral-400"><span id="seasonPct">0</span>% of season target</div>
+            </div>
+          </section>
+
+          <!-- ACTION ROWS -->
+          <section class="grid grid-cols-1 xl:grid-cols-[1fr_360px] gap-6">
+            <!-- Left: tasks/quests -->
+            <div class="space-y-6 min-w-0">
+              <!-- Daily check-in -->
+              <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+                <div class="flex items-center justify-between">
+                  <div class="text-sm font-semibold">Daily Check‑in</div>
+                  <div class="text-xs text-neutral-400">+10 $NIGGABASE</div>
+                </div>
+                <div class="mt-3 flex items-center gap-2 text-sm">
+                  <button id="checkInBtn" class="px-3 py-2 rounded-lg bg-white/5 hover:bg-white/10">Check in</button>
+                  <div id="streak" class="text-xs text-neutral-400">Streak: 0</div>
+                </div>
+              </div>
+
+              <!-- Core quests -->
+              <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+                <div class="text-sm font-semibold">Quests</div>
+                <div id="questList" class="mt-3 space-y-2 text-sm"></div>
+              </div>
+
+              <!-- On-chain demo tasks (simulated) -->
+              <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+                <div class="text-sm font-semibold">On‑chain Actions</div>
+                <div class="mt-2 grid grid-cols-1 md:grid-cols-2 gap-2 text-sm" id="chainGrid"></div>
+              </div>
+            </div>
+
+            <!-- Right: referral + estimator -->
+            <aside class="space-y-6">
+              <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+                <div class="text-sm font-semibold">Referral</div>
+                <div class="text-xs text-neutral-400">Earn 200 $NIGGABASE per friend</div>
+                <div class="mt-2 flex items-center gap-2">
+                  <input id="refLink" class="flex-1 px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-sm" readonly>
+                  <button id="copyRef" class="px-3 py-2 rounded-lg bg-white/5 hover:bg-white/10 text-sm">Copy</button>
+                </div>
+              </div>
+              <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+                <div class="text-sm font-semibold">Airdrop Estimator</div>
+                <div class="text-xs text-neutral-400">Your season allocation based on points</div>
+                <div class="mt-3 grid grid-cols-2 gap-3 text-sm">
+                  <div class="rounded-xl border border-white/10 p-3"><div class="text-xs text-neutral-400">Points</div><div id="ptsBox" class="text-lg font-semibold">0</div></div>
+                  <div class="rounded-xl border border-white/10 p-3"><div class="text-xs text-neutral-400">Est. tokens</div><div id="estTokens" class="text-lg font-semibold">0</div></div>
+                </div>
+                <div class="mt-3 text-xs text-neutral-400">Calc: 1 point = 1 $NIGGABASE (subject to vibes).</div>
+              </div>
+            </aside>
+          </section>
+
+          <!-- Leaderboard + Store -->
+          <section class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+              <div class="text-sm font-semibold">Leaderboard</div>
+              <div id="lb" class="mt-3 space-y-2 text-sm"></div>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+              <div class="text-sm font-semibold">Store</div>
+              <div id="store" class="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm"></div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    lucide.createIcons({ attrs: { 'stroke-width': 1.5 } });
+    const key='nbx.rewards.v1';
+    const S=JSON.parse(localStorage.getItem(key)||'{"points":0,"balance":0,"streak":0,"quests":{},"ref":""}');
+    const save=()=>localStorage.setItem(key, JSON.stringify(S));
+    const $=(s,r=document)=>r.querySelector(s);
+    const $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+
+    // Hero balance
+    function syncTop(){
+      $('#balLine').textContent = `${S.balance.toLocaleString()} $NIGGABASE`;
+      const pct = Math.min(100, Math.floor((S.points%1000)/10));
+      $('#seasonProg').style.width = pct+'%';
+      $('#seasonPct').textContent = pct;
+      $('#ptsBox').textContent = S.points.toLocaleString();
+      $('#estTokens').textContent = (S.points).toLocaleString();
+    }
+
+    // Daily check-in
+    $('#checkInBtn').addEventListener('click',()=>{
+      const today=new Date().toDateString();
+      if(S.lastCheck===today){ alert('Already checked in today'); return; }
+      S.lastCheck=today; S.streak=(S.streak||0)+1; S.points+=10; S.balance+=10; save();
+      $('#streak').textContent='Streak: '+S.streak;
+      syncTop();
+    });
+    $('#streak').textContent='Streak: '+(S.streak||0);
+
+    // Quests
+    const quests=[
+      {id:'connect', t:'Connect wallet (mock)', r:50},
+      {id:'trade', t:'Place 1 mock trade', r:120},
+      {id:'learn', t:'Finish tutorial “Flips 101”', r:80},
+      {id:'share', t:'Tweet your bag screenshot', r:60}
+    ];
+    function renderQuests(){
+      const box=$('#questList'); box.innerHTML='';
+      quests.forEach(q=>{
+        const done=!!S.quests[q.id];
+        const row=document.createElement('div');
+        row.className='flex items-center justify-between rounded-lg border border-white/10 px-3 py-2';
+        row.innerHTML=`<span>${q.t}</span><span class="text-xs text-neutral-400 mr-2">+${q.r}</span>${done?'<span class="text-emerald-400 text-xs">Done</span>':`<button data-q="${q.id}" class="px-2 py-1 rounded bg-indigo-500 hover:bg-indigo-600 text-xs">Claim</button>`}`;
+        box.appendChild(row);
+      });
+      box.querySelectorAll('[data-q]').forEach(b=>b.addEventListener('click',()=>{
+        const id=b.getAttribute('data-q'); if(S.quests[id]) return; S.quests[id]=true; S.points+=quests.find(x=>x.id===id).r; S.balance+=quests.find(x=>x.id===id).r; save(); renderQuests(); syncTop();
+      }));
+    }
+
+    // Chain actions (simulated)
+    const acts=[
+      {id:'stake', n:'Stake $NIGGABASE (mock)', r:150},
+      {id:'lp', n:'Provide LP to HOOD/BASE (mock)', r:200},
+      {id:'vote', n:'Cast a governance vote', r:70},
+      {id:'tip', n:'Tip a homie 1 token', r:5}
+    ];
+    function renderChain(){
+      const g=$('#chainGrid'); g.innerHTML='';
+      acts.forEach(a=>{
+        const btn=`<button data-act="${a.id}" class="px-2 py-1 rounded bg-white/5 hover:bg-white/10">Do it</button>`;
+        g.insertAdjacentHTML('beforeend',`<div class="rounded-xl border border-white/10 p-3 flex items-center justify-between"><span>${a.n}</span><span class="text-xs text-neutral-400">+${a.r}</span>${btn}</div>`);
+      });
+      g.querySelectorAll('[data-act]').forEach(b=>b.addEventListener('click',()=>{
+        const id=b.getAttribute('data-act'); const r=acts.find(x=>x.id===id).r; S.points+=r; S.balance+=r; save(); syncTop(); b.textContent='Done'; b.disabled=true; b.classList.add('opacity-50');
+      }));
+    }
+
+    // Referral link
+    (function(){
+      if(!S.ref){ S.ref = 'https://niggabase.local/ref/'+Math.random().toString(36).slice(2,8); save(); }
+      $('#refLink').value=S.ref;
+      $('#copyRef').addEventListener('click',()=>{ navigator.clipboard?.writeText(S.ref); $('#copyRef').textContent='Copied'; setTimeout(()=>$('#copyRef').textContent='Copy',1200); });
+    })();
+
+    // Leaderboard (offline mock)
+    (function(){
+      const peers=[
+        {n:'YOU', p:S.points},
+        {n:'TrenchBaby', p:1820},
+        {n:'BlockBae', p:1260},
+        {n:'FedWatcher', p:990}
+      ].sort((a,b)=>b.p-a.p);
+      $('#lb').innerHTML = peers.map((u,i)=>`<div class="flex items-center justify-between rounded-lg border border-white/10 px-3 py-2"><span>${i+1}. ${u.n}</span><span class="text-xs text-neutral-400">${u.p}</span></div>`).join('');
+    })();
+
+    // Store
+    (function(){
+      const items=[
+        {n:'Badge: Early Trapper', c:50},
+        {n:'PFP Frame: Base Brown', c:120},
+        {n:'Title: Chart Demon', c:420},
+        {n:'Boost: +5% Airdrop Multiplier (24h)', c:200}
+      ];
+      const grid=$('#store');
+      grid.innerHTML = items.map(s=>`<div class="rounded-lg border border-white/10 p-3"><div class="font-medium">${s.n}</div><div class="text-xs text-neutral-400">Cost: ${s.c}</div><button data-buy="${s.c}" class="mt-2 px-3 py-1 rounded bg-white/5 hover:bg-white/10 text-xs">Redeem</button></div>`).join('');
+      grid.querySelectorAll('[data-buy]').forEach(btn=>btn.addEventListener('click',()=>{
+        const cost=Number(btn.dataset.buy); if(S.points<cost){alert('Not enough tokens'); return;} S.points-=cost; save(); syncTop(); btn.textContent='Redeemed'; btn.disabled=true; btn.classList.add('opacity-50');
+      }));
+    })();
+
+    // How it works modal
+    $('#howItWorks').addEventListener('click',()=>{
+      let wrap=document.getElementById('rwModal');
+      if(!wrap){
+        wrap=document.createElement('div'); wrap.id='rwModal'; wrap.className='fixed inset-0 z-50 grid place-items-center p-4';
+        wrap.innerHTML=`<div class="w-full max-w-xl rounded-2xl border border-white/10 bg-neutral-950"><div class="px-5 py-4 border-b border-white/10 flex items-center justify-between"><h3 class="text-lg font-semibold">$NIGGABASE Airdrop</h3><button id="rwX" class="p-2 rounded hover:bg-white/5">✕</button></div><div class="p-5 text-sm text-neutral-300 space-y-3"><p>Earn points from check‑ins, quests, on‑chain actions, and referrals. Every point converts 1:1 into $NIGGABASE at claim.</p><p>Season 1 runs for a limited time. Multipliers and secret quests may appear. Stay hungry.</p></div><div class="px-5 py-4 border-t border-white/10 text-right"><button id="rwOk" class="px-3 py-2 rounded bg-white/5 hover:bg-white/10 text-sm">Got it</button></div></div>`;
+        document.body.appendChild(wrap);
+        document.getElementById('rwX').onclick=()=>wrap.remove();
+        document.getElementById('rwOk').onclick=()=>wrap.remove();
+      }
+    });
+
+    // Initial paint
+    syncTop(); renderQuests(); renderChain();
+  </script>
+</body>
+</html>
+
