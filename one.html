@@ -21,7 +21,7 @@
     <!-- Sidebar -->
     <aside class="hidden lg:flex w-64 flex-col border-r border-white/10 bg-neutral-950/95 backdrop-blur-sm">
       <div class="h-16 flex items-center px-5 border-b border-white/10">
-        <img src="C:\\Users\\DAVID\\Downloads\\niggabase\\niggabase\\assets\\niggabase logo.png" alt="Niggabase" class="w-8 h-8 rounded-lg object-contain"/>
+        <img src="assets/niggabase%20logo.png" alt="Niggabase" class="w-8 h-8 rounded-lg object-contain"/>
         <span class="ml-3 text-lg font-black tracking-tight brand-gradient" style="letter-spacing:-0.02em">Niggabase</span>
       </div>
       <nav class="flex-1 overflow-y-auto px-2 py-3">
@@ -394,7 +394,7 @@
         let wrap=document.getElementById('nbOneComingSoon');
         if(!wrap){
           wrap=document.createElement('div'); wrap.id='nbOneComingSoon'; wrap.style.cssText='position:fixed;inset:0;z-index:70;display:flex;align-items:center;justify-content:center;background:rgba(12,12,14,.92);backdrop-filter:blur(6px);text-align:center;padding:24px';
-          wrap.innerHTML=`<div><img src="C:\\Users\\DAVID\\Downloads\\niggabase\\niggabase\\assets\\niggabase logo.png" alt="Niggabase" style="width:56px;height:56px;object-fit:contain;filter:drop-shadow(0 6px 24px rgba(255,255,255,.08))"><div style="margin-top:12px;font-weight:800;letter-spacing:-.01em;font-size:28px">Membership checkout coming soon</div><div style="margin-top:6px;color:#a3a3a3;max-width:560px">You are locked in for ${state.tier||'Street Nigga'} — ${state.billing||'Monthly Hustle'}. We’ll open the real flow next.</div><div style="margin-top:16px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap"><button id="nbOneCsClose" style="padding:10px 14px;border-radius:12px;background:#8B5E3C;color:#fff;border:0;font-weight:600">Close</button></div></div>`;
+          wrap.innerHTML=`<div><img src="assets/niggabase%20logo.png" alt="Niggabase" style="width:56px;height:56px;object-fit:contain;filter:drop-shadow(0 6px 24px rgba(255,255,255,.08))"><div style="margin-top:12px;font-weight:800;letter-spacing:-.01em;font-size:28px">Membership checkout coming soon</div><div style="margin-top:6px;color:#a3a3a3;max-width:560px">You are locked in for ${state.tier||'Street Nigga'} — ${state.billing||'Monthly Hustle'}. We’ll open the real flow next.</div><div style="margin-top:16px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap"><button id="nbOneCsClose" style="padding:10px 14px;border-radius:12px;background:#8B5E3C;color:#fff;border:0;font-weight:600">Close</button></div></div>`;
           document.body.appendChild(wrap);
           document.getElementById('nbOneCsClose').addEventListener('click',()=>wrap.remove());
         } else { wrap.style.display='flex'; }
